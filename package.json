@@ -1,0 +1,9 @@
+{
+  "name": "raiseclinique",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "resend": "^3.5.0",
+    "twilio": "^5.3.7"
+  }
+}

@@ -1519,14 +1519,14 @@
       <div class="form-sub">Începe-ți ritualul.</div>
 
       <div class="row">
-        <div class="fld"><label>Nume</label><input type="text" required placeholder="Numele tău"/></div>
-        <div class="fld"><label>Telefon</label><input type="tel" required placeholder="07xx xxx xxx"/></div>
+        <div class="fld"><label>Nume</label><input type="text" name="name" required placeholder="Numele tău"/></div>
+        <div class="fld"><label>Telefon</label><input type="tel" name="phone" required placeholder="07xx xxx xxx"/></div>
       </div>
-      <div class="fld"><label>Email</label><input type="email" required placeholder="adresa@email.ro"/></div>
+      <div class="fld"><label>Email</label><input type="email" name="email" required placeholder="adresa@email.ro"/></div>
       <div class="row">
         <div class="fld">
           <label>Tratament</label>
-          <select required>
+          <select name="treatment" required>
             <option value="">Alege un serviciu…</option>
             <option>Ritual Glow Signature</option>
             <option>Hidratare Profundă cu HA</option>
@@ -1538,9 +1538,9 @@
             <option>Consultație &amp; Recomandare</option>
           </select>
         </div>
-        <div class="fld"><label>Dată preferată</label><input type="date"/></div>
+        <div class="fld"><label>Dată preferată</label><input type="date" name="date"/></div>
       </div>
-      <div class="fld"><label>Mesaj (opțional)</label><textarea placeholder="Spune-ne despre tenul tău…"></textarea></div>
+      <div class="fld"><label>Mesaj (opțional)</label><textarea name="message" placeholder="Spune-ne despre tenul tău…"></textarea></div>
       <div class="submit-row">
         <small>Te contactăm telefonic pentru confirmare.</small>
         <button type="submit" class="btn solid lg">Trimite cererea</button>
@@ -1664,10 +1664,27 @@
   // booking form
   const form = document.getElementById('bookForm');
   const success = document.getElementById('bookSuccess');
-  form.addEventListener('submit', (e)=>{
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    form.style.display = 'none';
-    success.style.display = 'block';
+    const btn = form.querySelector('button[type="submit"]');
+    const originalLabel = btn.textContent;
+    btn.textContent = 'Se trimite…';
+    btn.disabled = true;
+    try {
+      const data = Object.fromEntries(new FormData(form));
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) throw new Error('server error');
+      form.style.display = 'none';
+      success.style.display = 'block';
+    } catch {
+      btn.textContent = originalLabel;
+      btn.disabled = false;
+      alert('A apărut o eroare. Te rugăm să ne contactezi telefonic.');
+    }
   });
 </script>
 
