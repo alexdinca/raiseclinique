@@ -1,12 +1,46 @@
 const { Resend } = require('resend');
 const twilio = require('twilio');
 
+const ALLOWED_TREATMENTS = new Set([
+  'Ritual Glow Signature',
+  'Hidratare Profundă cu HA',
+  'Microneedling Pro',
+  'Peeling Chimic Personalizat',
+  'Radiofrecvență Facială',
+  'Mezoterapie cu Vitamine',
+  'Masaj de Drenaj Limfatic',
+  'Pachet Bridal Glow',
+  'Consultație & Recomandare',
+]);
+
+const MAX = { name: 120, phone: 30, email: 254, treatment: 100, date: 10, message: 1000 };
+
+// Accept only strings — reject arrays/objects/numbers silently as empty
+function str(val, max) {
+  if (typeof val !== 'string') return '';
+  return val.trim().slice(0, max);
+}
+
 function esc(val) {
-  return String(val ?? '')
+  return String(val)
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+function isValidEmail(v) {
+  return v.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+}
+
+function isValidPhone(v) {
+  // digits, spaces, +, -, (, ) — at least 7 chars after stripping spaces
+  return /^[\d\s+\-()/]{7,30}$/.test(v) && v.replace(/\D/g, '').length >= 7;
+}
+
+function isValidDate(v) {
+  if (!v) return true; // optional field
+  return /^\d{4}-\d{2}-\d{2}$/.test(v) && !isNaN(Date.parse(v));
 }
 
 module.exports = async function handler(req, res) {
@@ -14,14 +48,43 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, phone, email, treatment, date, message } = req.body ?? {};
+  const ct = req.headers['content-type'] ?? '';
+  if (!ct.includes('application/json')) {
+    return res.status(415).json({ error: 'Content-Type must be application/json' });
+  }
 
+  const body = req.body ?? {};
+
+  // Sanitize first — enforce types and max lengths
+  const name      = str(body.name,      MAX.name);
+  const phone     = str(body.phone,     MAX.phone);
+  const email     = str(body.email,     MAX.email);
+  const treatment = str(body.treatment, MAX.treatment);
+  const date      = str(body.date,      MAX.date);
+  const message   = str(body.message,   MAX.message);
+
+  // Validate required presence
   if (!name || !phone || !email || !treatment) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  const dateRow = date ? `<tr><td><strong>Dată preferată</strong></td><td>${esc(date)}</td></tr>` : '';
-  const msgRow  = message ? `<tr><td><strong>Mesaj</strong></td><td>${esc(message)}</td></tr>` : '';
+  // Validate formats
+  if (!isValidEmail(email)) {
+    return res.status(400).json({ error: 'Invalid email address' });
+  }
+  if (!isValidPhone(phone)) {
+    return res.status(400).json({ error: 'Invalid phone number' });
+  }
+  if (!ALLOWED_TREATMENTS.has(treatment)) {
+    return res.status(400).json({ error: 'Invalid treatment selection' });
+  }
+  if (!isValidDate(date)) {
+    return res.status(400).json({ error: 'Invalid date format' });
+  }
+
+  // Build outputs from sanitized values only
+  const dateRow = date    ? `<tr><td style="padding:8px 0;border-bottom:1px solid #eee;width:140px"><strong>Dată preferată</strong></td><td style="padding:8px 0;border-bottom:1px solid #eee">${esc(date)}</td></tr>` : '';
+  const msgRow  = message ? `<tr><td style="padding:8px 0;border-bottom:1px solid #eee"><strong>Mesaj</strong></td><td style="padding:8px 0;border-bottom:1px solid #eee">${esc(message)}</td></tr>` : '';
 
   const htmlBody = `
     <div style="font-family:sans-serif;max-width:520px;margin:0 auto;color:#2A231A">
@@ -51,11 +114,11 @@ module.exports = async function handler(req, res) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
-      from: process.env.EMAIL_FROM,
-      to:   process.env.CLINIC_EMAIL,
+      from:    process.env.EMAIL_FROM,
+      to:      process.env.CLINIC_EMAIL,
       replyTo: email,
       subject: `Programare nouă — ${treatment} (${name})`,
-      html: htmlBody,
+      html:    htmlBody,
     });
     results.email = true;
   } catch (err) {
