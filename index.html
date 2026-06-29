@@ -1392,48 +1392,55 @@
 </script>
 
 <script>
-  // ===== About photo carousel (auto-advancing) =====
+  // ===== About photo carousel (auto-advancing, self-healing) =====
   (function(){
     const track = document.getElementById('acTrack');
     if (!track) return;
     const base = 'assets/about-carousel/';
     const photos = [
       'clinique.jpg','2.jpg','3.jpg',
-      'DSC02154.jpg','DSC02165.jpg','DSC02270.jpg','DSC02316.jpg',
+      'DSC02154.jpg','DSC02270.jpg','DSC02316.jpg',
       'DSC02373.jpg','DSC02683.jpg','DSC02731.jpg','DSC03366.jpg'
     ];
-    const n = photos.length;
     const INTERVAL = 3500;
-    // build slides + a clone of the first for a seamless forward loop
-    photos.concat(photos[0]).forEach((name) => {
+    // One slide per photo. If a photo is removed from the folder its image
+    // 404s and the slide drops itself, so the carousel never shows a gap.
+    photos.forEach((name) => {
       const slide = document.createElement('div');
       slide.className = 'ac-slide';
       const img = document.createElement('img');
-      img.src = base + encodeURIComponent(name);
       img.alt = 'Raise Beauty Clinique';
       img.loading = 'lazy';
       img.decoding = 'async';
+      img.addEventListener('error', () => slide.remove());
+      img.src = base + encodeURIComponent(name);
       slide.appendChild(img);
       track.appendChild(slide);
     });
-    const preload = (i) => { const im = new Image(); im.src = base + encodeURIComponent(photos[((i % n) + n) % n]); };
-    let idx = 0, timer = null;
+    // Preload the slide that will animate into view next.
+    function warmNext(){
+      const next = track.children[1];
+      if (!next) return;
+      const p = new Image(); p.src = next.querySelector('img').getAttribute('src');
+    }
+    let timer = null, animating = false;
     function advance(){
-      idx++;
+      if (animating || track.children.length < 2) return;
+      animating = true;
       track.style.transition = 'transform .9s cubic-bezier(.65,.05,.36,1)';
-      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
-      preload(idx + 1);
+      track.style.transform = 'translateX(-100%)';
     }
     track.addEventListener('transitionend', (e) => {
       if (e.propertyName !== 'transform') return;
-      if (idx >= n) { // showed the clone (= first); snap back without animation
-        track.style.transition = 'none';
-        idx = 0;
-        track.style.transform = 'translateX(0)';
-        void track.offsetWidth; // force reflow so the next move animates
-      }
+      // Conveyor: move the first slide to the end, snap back instantly.
+      track.style.transition = 'none';
+      track.appendChild(track.firstElementChild);
+      track.style.transform = 'translateX(0)';
+      void track.offsetWidth; // force reflow so the next move animates
+      animating = false;
+      warmNext();
     });
-    function start(){ if (timer) return; preload(0); preload(1); timer = setInterval(advance, INTERVAL); }
+    function start(){ if (timer) return; warmNext(); timer = setInterval(advance, INTERVAL); }
     function stop(){ clearInterval(timer); timer = null; }
     const frame = track.closest('.about-image');
     if ('IntersectionObserver' in window) {
