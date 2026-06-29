@@ -358,34 +358,158 @@
   }
 
   /* MENU / treatments list */
-  .menu{background:var(--ivory)}
-  .menu-wrap{
-    max-width:1100px;margin:0 auto;
-    display:grid;grid-template-columns:1fr 1fr;gap:80px 90px;
+  /* PROMO badge in hero */
+  .promo-badge{
+    position:relative;
+    margin:0 0 42px;max-width:480px;
+    padding:22px 26px 22px 28px;
+    background:linear-gradient(180deg,rgba(255,255,255,.7),rgba(242,231,207,.55));
+    border:1px solid var(--gold-soft);
   }
-  .menu-col h3{
-    font-family:"Cinzel",serif;font-weight:500;letter-spacing:.28em;font-size:12px;
-    color:var(--gold-2);text-transform:uppercase;
-    padding-bottom:14px;border-bottom:1px solid var(--line-strong);margin-bottom:24px;
-    display:flex;align-items:center;gap:14px;
+  .promo-badge::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);
   }
-  .menu-col h3 .diamond{width:5px;height:5px}
-  .menu-item{
-    display:grid;grid-template-columns:1fr auto;gap:18px;
-    padding:18px 0;border-bottom:1px dashed var(--line);
-    align-items:baseline;
+  .promo-kicker{
+    display:flex;align-items:center;gap:10px;
+    font-family:"Cinzel",serif;font-size:10px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gold-2);font-weight:600;margin-bottom:10px;
   }
-  .menu-item:last-child{border-bottom:none}
-  .menu-item .name{
-    font-family:"Cormorant Garamond",serif;font-size:22px;font-weight:400;color:var(--ink);
+  .promo-kicker .spark{width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
+  .promo-badge p{
+    font-family:"Cormorant Garamond",serif;font-size:19px;line-height:1.5;color:var(--ink);
+    font-style:italic;margin:0;
   }
-  .menu-item .desc{
-    font-family:"Cormorant Garamond",serif;font-size:15px;font-style:italic;
-    color:var(--muted);margin-top:4px;line-height:1.4;
+  .promo-badge p strong{color:var(--gold-2);font-style:normal;font-weight:600}
+
+  /* SERVICII (tabbed) */
+  .servicii{background:var(--ivory)}
+  .svc-tabs{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+    max-width:1000px;margin:0 auto 56px;
   }
-  .menu-item .price{
-    font-family:"Cinzel",serif;font-size:13px;letter-spacing:.18em;color:var(--gold-2);font-weight:500;
+  .svc-tab{
+    font-family:"Cinzel",serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;
+    color:var(--ink-soft);background:transparent;
+    border:1px solid var(--line);
+    padding:13px 22px;cursor:pointer;transition:all .22s;
     white-space:nowrap;
+  }
+  .svc-tab:hover{border-color:var(--gold);color:var(--gold-2)}
+  .svc-tab.active{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+  .svc-panel{display:none;max-width:1040px;margin:0 auto}
+  .svc-panel.active{display:block}
+  .svc-card{
+    display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;
+    padding:26px 4px;border-bottom:1px solid var(--line);
+  }
+  .svc-card:first-child{border-top:1px solid var(--line-strong)}
+  .svc-card:last-child{border-bottom:1px solid var(--line-strong)}
+  .svc-name{
+    font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:400;color:var(--ink);
+    line-height:1.15;margin-bottom:6px;
+  }
+  .svc-tag{
+    font-family:"Cormorant Garamond",serif;font-size:17px;font-style:italic;
+    color:var(--muted);line-height:1.4;
+  }
+  .svc-aside{
+    display:flex;align-items:center;gap:26px;justify-content:flex-end;
+  }
+  .svc-price{display:flex;flex-direction:column;align-items:flex-end;line-height:1.1;gap:2px}
+  .svc-price .old{
+    font-family:"Cormorant Garamond",serif;font-size:16px;color:var(--muted);
+    text-decoration:line-through;text-decoration-color:var(--gold);
+  }
+  .svc-price .now{
+    font-family:"Cinzel",serif;font-size:17px;letter-spacing:.08em;color:var(--gold-2);font-weight:600;
+    white-space:nowrap;
+  }
+  .svc-detail{
+    flex:none;
+    font-family:"Cinzel",serif;font-size:10px;letter-spacing:.28em;text-transform:uppercase;font-weight:500;
+    color:var(--gold-2);background:transparent;border:1px solid var(--gold-soft);
+    padding:12px 18px;cursor:pointer;transition:all .22s;
+  }
+  .svc-detail:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .svc-empty{
+    text-align:center;padding:60px 20px;
+    border-top:1px solid var(--line-strong);border-bottom:1px solid var(--line-strong);
+    max-width:640px;margin:0 auto;
+  }
+  .svc-empty .soon-mark{
+    width:64px;height:64px;border:1px solid var(--gold);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 22px;color:var(--gold-2);
+  }
+  .svc-empty p{
+    font-family:"Cormorant Garamond",serif;font-size:24px;font-style:italic;color:var(--ink-soft);
+  }
+
+  /* MODAL */
+  .svc-modal{
+    position:fixed;inset:0;z-index:80;
+    display:flex;align-items:center;justify-content:center;
+    padding:32px;
+    background:rgba(42,35,26,.55);backdrop-filter:blur(6px);
+    opacity:0;visibility:hidden;transition:opacity .3s ease,visibility 0s linear .3s;
+  }
+  .svc-modal.open{opacity:1;visibility:visible;transition:opacity .3s ease}
+  .svc-modal-card{
+    position:relative;
+    width:min(680px,100%);max-height:86vh;overflow-y:auto;
+    background:var(--ivory);
+    border:1px solid var(--line-strong);
+    padding:46px 50px 40px;
+    transform:translateY(16px) scale(.98);transition:transform .3s ease;
+    box-shadow:0 30px 80px rgba(42,35,26,.3);
+  }
+  .svc-modal.open .svc-modal-card{transform:none}
+  .svc-close{
+    position:absolute;top:18px;right:18px;
+    width:40px;height:40px;border-radius:50%;border:1px solid var(--line);
+    background:var(--ivory);color:var(--ink-soft);cursor:pointer;font-size:20px;line-height:1;
+    display:flex;align-items:center;justify-content:center;transition:all .2s;
+  }
+  .svc-close:hover{border-color:var(--gold);color:var(--gold-2)}
+  .svc-modal .m-eyebrow{
+    font-family:"Cinzel",serif;font-size:10px;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gold-2);margin-bottom:12px;
+  }
+  .svc-modal h3{
+    font-family:"Cormorant Garamond",serif;font-weight:400;font-size:36px;line-height:1.1;
+    color:var(--ink);margin-bottom:14px;padding-right:40px;
+  }
+  .svc-modal-price{
+    display:flex;align-items:baseline;gap:14px;
+    padding-bottom:24px;margin-bottom:26px;border-bottom:1px solid var(--line);
+  }
+  .svc-modal-price .old{
+    font-family:"Cormorant Garamond",serif;font-size:20px;color:var(--muted);
+    text-decoration:line-through;text-decoration-color:var(--gold);
+  }
+  .svc-modal-price .now{
+    font-family:"Cinzel",serif;font-size:22px;letter-spacing:.06em;color:var(--gold-2);font-weight:600;
+  }
+  .svc-modal-body p{
+    font-family:"Cormorant Garamond",serif;font-size:18px;line-height:1.6;color:var(--ink-soft);
+    margin-bottom:16px;
+  }
+  .svc-modal-body h5{
+    font-family:"Cinzel",serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--gold-2);font-weight:600;margin:26px 0 12px;
+  }
+  .svc-modal-body ul{list-style:none;margin:0 0 16px;padding:0}
+  .svc-modal-body li{
+    position:relative;padding-left:22px;margin-bottom:9px;
+    font-family:"Cormorant Garamond",serif;font-size:17px;line-height:1.5;color:var(--ink-soft);
+  }
+  .svc-modal-body li::before{
+    content:"";position:absolute;left:2px;top:10px;width:5px;height:5px;
+    background:var(--gold);transform:rotate(45deg);
+  }
+  .svc-modal-body li b{color:var(--ink);font-weight:600}
+  .svc-modal-foot{
+    margin-top:30px;padding-top:26px;border-top:1px solid var(--line);
+    display:flex;justify-content:flex-end;
   }
 
   /* TESTIMONIAL */
@@ -742,13 +866,28 @@
     .pillar h4{font-size:12px;letter-spacing:.16em}
     .pillar p{font-size:16px}
 
-    /* menu */
-    .menu-wrap{gap:42px}
-    .menu-col h3{font-size:11px;letter-spacing:.24em}
-    .menu-item{grid-template-columns:1fr;gap:8px;padding:16px 0}
-    .menu-item .name{font-size:19px}
-    .menu-item .desc{font-size:14px;margin-top:2px}
-    .menu-item .price{font-size:12px;letter-spacing:.16em;color:var(--gold-2);font-weight:600}
+    /* servicii */
+    .svc-tabs{gap:8px;margin-bottom:38px}
+    .svc-tab{font-size:10px;letter-spacing:.16em;padding:11px 14px}
+    .svc-card{grid-template-columns:1fr;gap:16px;padding:22px 2px}
+    .svc-name{font-size:23px}
+    .svc-tag{font-size:16px}
+    .svc-aside{justify-content:space-between;gap:16px}
+    .svc-price{flex-direction:row;align-items:baseline;gap:10px}
+    .svc-detail{padding:11px 16px}
+    .svc-modal{padding:0}
+    .svc-modal-card{
+      width:100%;max-height:100%;height:100%;
+      padding:calc(env(safe-area-inset-top,0px) + 56px) 24px calc(env(safe-area-inset-bottom,0px) + 28px);
+      border:none;
+    }
+    .svc-modal h3{font-size:30px}
+    .svc-modal-body p,.svc-modal-body li{font-size:16px}
+    .svc-modal-foot{justify-content:stretch}
+    .svc-modal-foot .btn{width:100%;justify-content:center}
+    /* promo */
+    .promo-badge{margin:0 auto 30px;padding:18px 20px 18px 22px;text-align:left}
+    .promo-badge p{font-size:17px}
 
     /* testimonial */
     .testimonial{padding:80px 22px !important;background-attachment:scroll}
@@ -793,8 +932,8 @@
 <nav class="top" id="nav" data-screen-label="nav">
   <ul class="nav-links">
     <li><a href="#about">Despre</a></li>
-    <li><a href="#services">Tratamente</a></li>
-    <li><a href="#menu">Servicii</a></li>
+    <li><a href="#services">Servicii</a></li>
+    <li><a href="#promo">Promoții</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-brand">
@@ -813,8 +952,8 @@
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <ul>
     <li><a href="#about" data-mm><span>Despre</span><span class="num">01</span></a></li>
-    <li><a href="#services" data-mm><span>Tratamente</span><span class="num">02</span></a></li>
-    <li><a href="#menu" data-mm><span>Servicii</span><span class="num">03</span></a></li>
+    <li><a href="#services" data-mm><span>Servicii</span><span class="num">02</span></a></li>
+    <li><a href="#promo" data-mm><span>Promoții</span><span class="num">03</span></a></li>
     <li><a href="#contact" data-mm><span>Contact</span><span class="num">04</span></a></li>
   </ul>
   <div class="foot">
@@ -836,6 +975,10 @@
       Tratamente premium pentru o piele sănătoasă, luminoasă și încrezătoare —
       într-un spațiu gândit pentru tine.
     </p>
+    <div class="promo-badge" id="promo">
+      <div class="promo-kicker"><span class="spark"></span> Promoții de vară</div>
+      <p>La oricare <strong>4 ședințe</strong> de tratamente faciale sau corporale, a 5-a este <strong>gratuită</strong> — același tratament sau un <strong>Carbon Peel cadou</strong>.</p>
+    </div>
     <div class="hero-cta">
       <a href="#contact" class="btn solid lg">Răsfață-te acum</a>
       <a href="#services" class="btn lg">Vezi tratamentele</a>
@@ -1306,59 +1449,16 @@
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services reveal" id="services" data-screen-label="services">
+<!-- SERVICII -->
+<section class="servicii reveal" id="services" data-screen-label="servicii">
   <div class="section-head">
     <span class="ornament short"><span class="diamond"></span></span>
-    <div class="eyebrow">Tratamentele noastre</div>
-    <h2>Patru piloni pentru un <em>ten radiant</em>.</h2>
-    <p>Fiecare serviciu pornește de la o consultație personalizată — pentru rezultate vizibile și durabile.</p>
+    <div class="eyebrow">Servicii &amp; Tarife</div>
+    <h2>Tratamente <em>premium</em>, prețuri de vară.</h2>
+    <p>Toate prețurile de mai jos includ reducerile promoționale de sezon. Apasă „Detalii” pentru descriere completă, beneficii și contraindicații.</p>
   </div>
-  <div class="services-grid">
-    <div class="service">
-      <div class="service-num">i.</div>
-      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" stroke="#A37F3B" stroke-width="1.1">
-        <path d="M30 14c-4 0-8 3-8 9 0 7 5 12 8 14 2-1 4-4 4-9 0-3-1-7-4-7" fill="none"/>
-        <path d="M30 14c0-3-3-5-6-5-4 0-8 3-10 7-2 4 0 9 2 12" fill="none"/>
-        <circle cx="33" cy="20" r="1.2" fill="#A37F3B"/>
-        <path d="M10 12l2 1 1 2 1-2 2-1-2-1-1-2-1 2zM14 22l1.5.75.75 1.5.75-1.5L18.5 22 17 21.25 16.25 19.75 15.5 21.25z" fill="#C2A052"/>
-      </svg>
-      <h3>Tratamente Faciale</h3>
-      <p>Curățare profundă, exfoliere enzimatică și masaj de relaxare — pentru un ten împrospătat.</p>
-      <span class="more">Descoperă →</span>
-    </div>
-    <div class="service">
-      <div class="service-num">ii.</div>
-      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" stroke="#A37F3B" stroke-width="1.1">
-        <path d="M23 8c-5 7-10 13-10 19a10 10 0 0 0 20 0c0-6-5-12-10-19z" fill="none"/>
-        <path d="M19 26c-1 3 0 6 3 7" fill="none" stroke-linecap="round"/>
-      </svg>
-      <h3>Hidratare Intensă</h3>
-      <p>Infuzii cu acid hialuronic și măști multi-strat pentru o piele suplă, lucioasă.</p>
-      <span class="more">Descoperă →</span>
-    </div>
-    <div class="service">
-      <div class="service-num">iii.</div>
-      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" stroke="#A37F3B" stroke-width="1.1">
-        <path d="M30 16c-4 0-8 3-8 9 0 7 5 12 8 14 2-1 4-4 4-9 0-3-1-7-4-7" fill="none"/>
-        <path d="M16 22l-4-4M16 22h-6M16 22l-4 4" stroke-linecap="round"/>
-        <circle cx="33" cy="22" r="1.2" fill="#A37F3B"/>
-      </svg>
-      <h3>Anti-Aging Avansat</h3>
-      <p>Radiofrecvență, microneedling și peeling-uri pentru o textură fermă și uniformă.</p>
-      <span class="more">Descoperă →</span>
-    </div>
-    <div class="service">
-      <div class="service-num">iv.</div>
-      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" stroke="#A37F3B" stroke-width="1.1">
-        <path d="M23 12c-2 5-6 8-10 9 4 1 8 4 10 9 2-5 6-8 10-9-4-1-8-4-10-9z" fill="none"/>
-        <path d="M23 30c-1 2-3 4-6 5 3 1 5 3 6 5 1-2 3-4 6-5-3-1-5-3-6-5z" fill="none"/>
-      </svg>
-      <h3>Îngrijire Personalizată</h3>
-      <p>Protocol croit după diagnosticul tenului tău — un parcurs complet, etapă cu etapă.</p>
-      <span class="more">Descoperă →</span>
-    </div>
-  </div>
+  <div class="svc-tabs" id="svcTabs"></div>
+  <div class="svc-panels" id="svcPanels"></div>
 </section>
 
 <!-- PHILOSOPHY -->
@@ -1383,79 +1483,6 @@
       <div class="num">03</div>
       <h4>Răsfăț autentic</h4>
       <p>Un spațiu liniștit, aromat, gândit pentru relaxare. Pleci ridicată — la propriu și la figurat.</p>
-    </div>
-  </div>
-</section>
-
-<!-- MENU -->
-<section class="menu reveal" id="menu" data-screen-label="menu">
-  <div class="section-head">
-    <span class="ornament short"><span class="diamond"></span></span>
-    <div class="eyebrow">Servicii &amp; Tarife</div>
-    <h2>O selecție <em>curatoriată</em> de ritualuri.</h2>
-  </div>
-  <div class="menu-wrap">
-    <div class="menu-col">
-      <h3><span class="diamond"></span> Față</h3>
-      <div class="menu-item">
-        <div>
-          <div class="name">Ritual Glow Signature</div>
-          <div class="desc">Curățare, exfoliere enzimatică, masaj kobido &amp; mască</div>
-        </div>
-        <div class="price">350 LEI</div>
-      </div>
-      <div class="menu-item">
-        <div>
-          <div class="name">Hidratare Profundă cu HA</div>
-          <div class="desc">Infuzie cu acid hialuronic în 3 greutăți moleculare</div>
-        </div>
-        <div class="price">420 LEI</div>
-      </div>
-      <div class="menu-item">
-        <div>
-          <div class="name">Microneedling Pro</div>
-          <div class="desc">Stimulează colagenul natural pentru fermitate</div>
-        </div>
-        <div class="price">580 LEI</div>
-      </div>
-      <div class="menu-item">
-        <div>
-          <div class="name">Peeling Chimic Personalizat</div>
-          <div class="desc">Acid mandelic, glicolic sau combinat — după ten</div>
-        </div>
-        <div class="price">320 LEI</div>
-      </div>
-    </div>
-    <div class="menu-col">
-      <h3><span class="diamond"></span> Anti-Aging &amp; Body</h3>
-      <div class="menu-item">
-        <div>
-          <div class="name">Radiofrecvență Facială</div>
-          <div class="desc">Liftare non-invazivă, efect imediat</div>
-        </div>
-        <div class="price">490 LEI</div>
-      </div>
-      <div class="menu-item">
-        <div>
-          <div class="name">Mezoterapie cu Vitamine</div>
-          <div class="desc">Cocktail vitaminic pentru luminozitate</div>
-        </div>
-        <div class="price">650 LEI</div>
-      </div>
-      <div class="menu-item">
-        <div>
-          <div class="name">Masaj de Drenaj Limfatic</div>
-          <div class="desc">60 min · efect detoxifiant complet</div>
-        </div>
-        <div class="price">280 LEI</div>
-      </div>
-      <div class="menu-item">
-        <div>
-          <div class="name">Pachet Bridal Glow</div>
-          <div class="desc">4 ședințe coordonate până la marele zi</div>
-        </div>
-        <div class="price">1 800 LEI</div>
-      </div>
     </div>
   </div>
 </section>
@@ -1526,16 +1553,8 @@
       <div class="row">
         <div class="fld">
           <label>Tratament</label>
-          <select name="treatment" required>
+          <select name="treatment" required id="bookService">
             <option value="">Alege un serviciu…</option>
-            <option>Ritual Glow Signature</option>
-            <option>Hidratare Profundă cu HA</option>
-            <option>Microneedling Pro</option>
-            <option>Peeling Chimic Personalizat</option>
-            <option>Radiofrecvență Facială</option>
-            <option>Mezoterapie cu Vitamine</option>
-            <option>Pachet Bridal Glow</option>
-            <option>Consultație &amp; Recomandare</option>
           </select>
         </div>
         <div class="fld"><label>Dată preferată</label><input type="date" name="date"/></div>
@@ -1556,6 +1575,20 @@
     </div>
   </div>
 </section>
+
+<!-- SERVICE DETAIL MODAL -->
+<div class="svc-modal" id="svcModal" aria-hidden="true">
+  <div class="svc-modal-card" role="dialog" aria-modal="true" aria-labelledby="mTitle">
+    <button class="svc-close" id="svcClose" aria-label="Închide">&times;</button>
+    <div class="m-eyebrow" id="mCat"></div>
+    <h3 id="mTitle"></h3>
+    <div class="svc-modal-price" id="mPrice"></div>
+    <div class="svc-modal-body" id="mBody"></div>
+    <div class="svc-modal-foot">
+      <a href="#contact" class="btn solid lg" id="mBook">Programează acest tratament</a>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer data-screen-label="footer">
@@ -1578,14 +1611,14 @@
     <div class="foot-col">
       <h5>Navigație</h5>
       <a href="#about">Despre</a>
-      <a href="#services">Tratamente</a>
-      <a href="#menu">Servicii</a>
+      <a href="#services">Servicii</a>
+      <a href="#promo">Promoții</a>
       <a href="#contact">Programare</a>
     </div>
     <div class="foot-col">
       <h5>Contact</h5>
       <p>0723 123 456</p>
-      <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2048454c4c4f6052414953454245415554590e524f">[email&#160;protected]</a></p>
+      <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="87efe2ebebe8c7f5e6eef4e2e5e2e6f2f3fea9f5e8">[email&#160;protected]</a></p>
       <p>@raisebeautyclinique</p>
     </div>
     <div class="foot-col">
@@ -1686,6 +1719,118 @@
       alert('A apărut o eroare. Te rugăm să ne contactezi telefonic.');
     }
   });
+</script>
+
+<script src="services-data.js"></script>
+<script>
+  // ===== Render services from SERVICES_DATA =====
+  (function(){
+    const data = window.SERVICES_DATA || [];
+    const tabsEl = document.getElementById('svcTabs');
+    const panelsEl = document.getElementById('svcPanels');
+    const bookSelect = document.getElementById('bookService');
+
+    data.forEach((cat, ci) => {
+      // tab
+      const tab = document.createElement('button');
+      tab.className = 'svc-tab' + (ci === 0 ? ' active' : '');
+      tab.textContent = cat.label;
+      tab.dataset.idx = ci;
+      tabsEl.appendChild(tab);
+
+      // panel
+      const panel = document.createElement('div');
+      panel.className = 'svc-panel' + (ci === 0 ? ' active' : '');
+      panel.dataset.idx = ci;
+
+      if (!cat.items.length) {
+        panel.innerHTML = `<div class="svc-empty">
+          <div class="soon-mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <p>${cat.note || 'Serviciu disponibil curând.'}</p>
+        </div>`;
+      } else {
+        cat.items.forEach((it, ii) => {
+          const card = document.createElement('article');
+          card.className = 'svc-card';
+          const priceHtml = it.old
+            ? `<span class="old">${it.old}</span><span class="now">${it.now}</span>`
+            : `<span class="now">${it.now}</span>`;
+          const main = document.createElement('div');
+          const nameEl = document.createElement('h3');
+          nameEl.className = 'svc-name';
+          nameEl.textContent = it.name;
+          const tagEl = document.createElement('p');
+          tagEl.className = 'svc-tag';
+          tagEl.textContent = it.tag;
+          main.appendChild(nameEl); main.appendChild(tagEl);
+
+          const aside = document.createElement('div');
+          aside.className = 'svc-aside';
+          aside.innerHTML = `<div class="svc-price">${priceHtml}</div>`;
+          const btn = document.createElement('button');
+          btn.className = 'svc-detail';
+          btn.textContent = 'Detalii';
+          btn.addEventListener('click', () => openModal(cat, it));
+          aside.appendChild(btn);
+
+          card.appendChild(main); card.appendChild(aside);
+          panel.appendChild(card);
+
+          // booking dropdown option
+          if (bookSelect) {
+            let grp = bookSelect.querySelector(`optgroup[label="${cat.label}"]`);
+            if (!grp) { grp = document.createElement('optgroup'); grp.label = cat.label; bookSelect.appendChild(grp); }
+            const opt = document.createElement('option');
+            opt.textContent = it.name;
+            grp.appendChild(opt);
+          }
+        });
+      }
+      panelsEl.appendChild(panel);
+    });
+    if (bookSelect) {
+      const opt = document.createElement('option');
+      opt.textContent = 'Consultație & Recomandare';
+      bookSelect.appendChild(opt);
+    }
+
+    // tab switching
+    tabsEl.addEventListener('click', (e) => {
+      const t = e.target.closest('.svc-tab');
+      if (!t) return;
+      const idx = t.dataset.idx;
+      tabsEl.querySelectorAll('.svc-tab').forEach(x => x.classList.toggle('active', x.dataset.idx === idx));
+      panelsEl.querySelectorAll('.svc-panel').forEach(x => x.classList.toggle('active', x.dataset.idx === idx));
+    });
+
+    // modal
+    const modal = document.getElementById('svcModal');
+    const mCat = document.getElementById('mCat');
+    const mTitle = document.getElementById('mTitle');
+    const mPrice = document.getElementById('mPrice');
+    const mBody = document.getElementById('mBody');
+    function openModal(cat, it){
+      mCat.textContent = cat.label;
+      mTitle.textContent = it.name;
+      mPrice.innerHTML = it.old
+        ? `<span class="old">${it.old}</span><span class="now">${it.now}</span>`
+        : `<span class="now">${it.now}</span>`;
+      mBody.innerHTML = it.desc;
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden','false');
+      modal.querySelector('.svc-modal-card').scrollTop = 0;
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(){
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('svcClose').addEventListener('click', closeModal);
+    document.getElementById('mBook').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
+    document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+  })();
 </script>
 
 </body>

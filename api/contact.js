@@ -1,15 +1,34 @@
 const { Resend } = require('resend');
 const twilio = require('twilio');
 
+// Must stay in sync with the service names in services-data.js
+// (the booking dropdown is populated from that file at runtime).
 const ALLOWED_TREATMENTS = new Set([
-  'Ritual Glow Signature',
-  'Hidratare Profundă cu HA',
-  'Microneedling Pro',
-  'Peeling Chimic Personalizat',
-  'Radiofrecvență Facială',
-  'Mezoterapie cu Vitamine',
-  'Masaj de Drenaj Limfatic',
-  'Pachet Bridal Glow',
+  // Tratamente faciale
+  'Instant Glow Microneedling',
+  'Mezoterapie Glow Up',
+  'Hydro-Glow & Deep Cleanse',
+  'Pro-Age & Collagen Booster',
+  'Flash Radiance & Detox',
+  'Teenage Dream',
+  'Hollywood Peel',
+  // Îndepărtare tatuaje
+  'Îndepărtare cu laser PICO',
+  'Îndepărtare cu substanță alcalină',
+  'Îndepărtare laser & substanță alcalină',
+  // Laminare sprâncene
+  'Stilizare & laminare sprâncene',
+  // HIFU
+  'HIFU gușă',
+  'HIFU full face',
+  'HIFU full face & gușă',
+  'HIFU brațe',
+  'HIFU zona fesieră',
+  'HIFU coapse',
+  'HIFU abdomen',
+  'HIFU full body',
+  'HIFU full face & full body',
+  // General
   'Consultație & Recomandare',
 ]);
 
