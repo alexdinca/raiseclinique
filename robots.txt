@@ -36,4 +36,4 @@ Allow: /
 User-agent: CCBot
 Allow: /
 
-Sitemap: https://raiseclinique.ro/sitemap.xml
+Sitemap: https://www.raiseclinique.ro/sitemap.xml
