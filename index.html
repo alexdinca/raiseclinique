@@ -231,9 +231,11 @@
   .about-image::before{
     content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.4);z-index:2;
   }
-  .about-image .about-photo{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  .about-image .ac-track{
+    position:absolute;inset:0;display:flex;
   }
+  .about-image .ac-slide{flex:0 0 100%;height:100%}
+  .about-image .ac-slide img{width:100%;height:100%;object-fit:cover;display:block}
   .about-image .badge{
     position:absolute;right:-40px;bottom:60px;
     width:170px;height:170px;border-radius:50%;
@@ -983,7 +985,7 @@
 <section class="about reveal" id="about" data-screen-label="about">
   <div class="about-grid">
     <div class="about-image">
-      <img src="assets/clinique.jpg" alt="Locația Raise Beauty Clinique — Lujerului, București" class="about-photo" />
+      <div class="ac-track" id="acTrack" role="img" aria-label="Galerie foto Raise Beauty Clinique"></div>
     </div>
     <div class="about-text">
       <div class="eyebrow">Despre noi</div>
@@ -1386,6 +1388,65 @@
     document.getElementById('mBook').addEventListener('click', closeModal);
     modal.addEventListener('click', (e)=>{ if(e.target === modal) closeModal(); });
     document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+  })();
+</script>
+
+<script>
+  // ===== About photo carousel (auto-advancing) =====
+  (function(){
+    const track = document.getElementById('acTrack');
+    if (!track) return;
+    const base = 'assets/about-carousel/';
+    const photos = [
+      'clinique.jpg','2.jpg','3.jpg',
+      'DSC02108.jpg','DSC02154.jpg','DSC02165.jpg','DSC02270.jpg',
+      'DSC02316.jpg','DSC02319.jpg','DSC02373.jpg','DSC02683.jpg',
+      'DSC02731.jpg','DSC03179.jpg','DSC03366.jpg'
+    ];
+    const n = photos.length;
+    const INTERVAL = 3500;
+    // build slides + a clone of the first for a seamless forward loop
+    photos.concat(photos[0]).forEach((name) => {
+      const slide = document.createElement('div');
+      slide.className = 'ac-slide';
+      const img = document.createElement('img');
+      img.src = base + encodeURIComponent(name);
+      img.alt = 'Raise Beauty Clinique';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      slide.appendChild(img);
+      track.appendChild(slide);
+    });
+    const preload = (i) => { const im = new Image(); im.src = base + encodeURIComponent(photos[((i % n) + n) % n]); };
+    let idx = 0, timer = null;
+    function advance(){
+      idx++;
+      track.style.transition = 'transform .9s cubic-bezier(.65,.05,.36,1)';
+      track.style.transform = 'translateX(-' + (idx * 100) + '%)';
+      preload(idx + 1);
+    }
+    track.addEventListener('transitionend', (e) => {
+      if (e.propertyName !== 'transform') return;
+      if (idx >= n) { // showed the clone (= first); snap back without animation
+        track.style.transition = 'none';
+        idx = 0;
+        track.style.transform = 'translateX(0)';
+        void track.offsetWidth; // force reflow so the next move animates
+      }
+    });
+    function start(){ if (timer) return; preload(0); preload(1); timer = setInterval(advance, INTERVAL); }
+    function stop(){ clearInterval(timer); timer = null; }
+    const frame = track.closest('.about-image');
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((ents) => {
+        ents.forEach((en) => { if (en.isIntersecting) { start(); } else { stop(); } });
+      }, { threshold: 0.2 }).observe(frame);
+    } else {
+      start();
+    }
+    // pause while hovering
+    frame.addEventListener('mouseenter', stop);
+    frame.addEventListener('mouseleave', start);
   })();
 </script>
 
