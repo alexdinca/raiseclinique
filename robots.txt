@@ -1,78 +1,39 @@
-# Work in progress — block all crawlers until launch
+# Raise Beauty Clinique — robots.txt
+# Site public — crawling permis.
 
 User-agent: *
-Disallow: /
+Allow: /
+Disallow: /api/
 
-# Search engines
-User-agent: Googlebot
-Disallow: /
-
-User-agent: Bingbot
-Disallow: /
-
-User-agent: Slurp
-Disallow: /
-
-User-agent: DuckDuckBot
-Disallow: /
-
-# AI / LLM training crawlers
+# Motoare AI / răspuns (GEO) — permise explicit
 User-agent: GPTBot
-Disallow: /
-
-User-agent: ChatGPT-User
-Disallow: /
+Allow: /
 
 User-agent: OAI-SearchBot
-Disallow: /
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
 
 User-agent: ClaudeBot
-Disallow: /
-
-User-agent: anthropic-ai
-Disallow: /
+Allow: /
 
 User-agent: Claude-Web
-Disallow: /
+Allow: /
 
-User-agent: CCBot
-Disallow: /
-
-User-agent: Google-Extended
-Disallow: /
-
-User-agent: Gemini
-Disallow: /
+User-agent: anthropic-ai
+Allow: /
 
 User-agent: PerplexityBot
-Disallow: /
+Allow: /
 
-User-agent: YouBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-User-agent: FacebookBot
-Disallow: /
+User-agent: Google-Extended
+Allow: /
 
 User-agent: Applebot-Extended
-Disallow: /
+Allow: /
 
-User-agent: cohere-ai
-Disallow: /
+User-agent: CCBot
+Allow: /
 
-User-agent: AI2Bot
-Disallow: /
-
-User-agent: Diffbot
-Disallow: /
-
-User-agent: ImagesiftBot
-Disallow: /
-
-User-agent: omgili
-Disallow: /
-
-User-agent: omgilibot
-Disallow: /
+Sitemap: https://raiseclinique.ro/sitemap.xml

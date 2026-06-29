@@ -4,11 +4,37 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#FBF6EC" />
-<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
-<meta name="googlebot" content="noindex, nofollow" />
-<meta name="CCBot" content="noindex, nofollow" />
-<meta name="GPTBot" content="noindex, nofollow" />
-<title>Raise Beauty Clinique — Frumusețea ta, ridicată la un nou nivel</title>
+<meta name="description" content="Salon de înfrumusețare în București, lângă metrou Lujerului (Sector 6). Tratamente faciale, HIFU, microneedling, Carbon Peel și laminare sprâncene. Zonă de joacă supravegheată pentru copii." />
+<meta name="keywords" content="salon înfrumusețare București, tratamente faciale București, HIFU București, microneedling, Carbon Peel, Hollywood Peel, mezoterapie, laminare sprâncene, îndepărtare tatuaje laser, salon cosmetică Sector 6, salon cu loc de joacă pentru copii" />
+<meta name="author" content="Raise Beauty Clinique" />
+<link rel="canonical" href="https://raiseclinique.ro/" />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+<!-- Geo (aprox. Lujerului — de verificat la crearea Google Business Profile) -->
+<meta name="geo.region" content="RO-B" />
+<meta name="geo.placename" content="București" />
+<meta name="geo.position" content="44.4283;26.0395" />
+<meta name="ICBM" content="44.4283, 26.0395" />
+
+<title>Raise Beauty Clinique — Salon Înfrumusețare București, Sector 6</title>
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Raise Beauty Clinique" />
+<meta property="og:title" content="Raise Beauty Clinique — Salon de înfrumusețare în București" />
+<meta property="og:description" content="Tratamente premium pentru un ten luminos și ferm — facial, HIFU, microneedling, Carbon Peel, laminare sprâncene. Zonă de joacă supravegheată pentru copii. Programează-te online." />
+<meta property="og:url" content="https://raiseclinique.ro/" />
+<meta property="og:image" content="https://raiseclinique.ro/assets/logo.jpeg" />
+<meta property="og:image:width" content="1440" />
+<meta property="og:image:height" content="1206" />
+<meta property="og:locale" content="ro_RO" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Raise Beauty Clinique — Salon de înfrumusețare în București" />
+<meta name="twitter:description" content="Tratamente premium pentru un ten luminos și ferm — facial, HIFU, microneedling, Carbon Peel, laminare sprâncene. Zonă de joacă supravegheată pentru copii." />
+<meta name="twitter:image" content="https://raiseclinique.ro/assets/logo.jpeg" />
 <link rel="icon" href="assets/favicon.ico" sizes="any" />
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png" />
 <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png" />
@@ -158,6 +184,12 @@
     margin-bottom:50px;font-style:italic;
   }
   .hero-cta{display:flex;gap:16px;align-items:center}
+  .hero-kids{
+    margin-top:26px;
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-size:15px;
+    color:var(--ink-soft);display:flex;align-items:center;gap:10px;
+  }
+  .hero-kids svg{flex:none;color:var(--gold-2)}
 
   .hero-right{
     position:relative;isolation:isolate;
@@ -338,14 +370,14 @@
   .philosophy .section-head h2 em{color:var(--gold-soft)}
   .philosophy .section-head p{color:rgba(251,246,236,.7)}
   .pillars{
-    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
     background:rgba(217,194,138,.18);
     max-width:1240px;margin:0 auto;
     border:1px solid rgba(217,194,138,.18);
   }
   .pillar{
     background:var(--ink);
-    padding:54px 44px;
+    padding:54px 30px;
     display:flex;flex-direction:column;gap:20px;
   }
   .pillar .num{
@@ -545,6 +577,39 @@
     cursor:pointer;transition:background .2s;
   }
   .test-dots span.active{background:var(--gold)}
+
+  /* FAQ */
+  .faq{background:var(--ivory)}
+  .faq-list{max-width:860px;margin:0 auto}
+  .faq-item{border-bottom:1px solid var(--line)}
+  .faq-item:first-child{border-top:1px solid var(--line-strong)}
+  .faq-item:last-child{border-bottom:1px solid var(--line-strong)}
+  .faq-q{
+    list-style:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:space-between;gap:28px;
+    padding:28px 6px;
+    font-family:"Cormorant Garamond",serif;font-size:25px;font-weight:400;color:var(--ink);
+    transition:color .2s;
+  }
+  .faq-q::-webkit-details-marker{display:none}
+  .faq-q:hover{color:var(--gold-2)}
+  .faq-item[open] .faq-q{color:var(--gold-2)}
+  .faq-q .ic{
+    position:relative;flex:none;width:18px;height:18px;
+  }
+  .faq-q .ic::before,.faq-q .ic::after{
+    content:"";position:absolute;left:50%;top:50%;background:var(--gold);
+    transition:transform .3s ease,opacity .3s ease;
+  }
+  .faq-q .ic::before{width:18px;height:1.5px;transform:translate(-50%,-50%)}
+  .faq-q .ic::after{width:1.5px;height:18px;transform:translate(-50%,-50%)}
+  .faq-item[open] .faq-q .ic::after{transform:translate(-50%,-50%) rotate(90deg);opacity:0}
+  .faq-a{
+    padding:0 6px 30px;max-width:760px;
+    font-family:"Cormorant Garamond",serif;font-size:19px;line-height:1.7;color:var(--ink-soft);
+  }
+  .faq-a a{color:var(--gold-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
+  .faq-a a:hover{color:var(--gold)}
 
   /* BOOKING */
   .booking{background:var(--ivory);padding:160px 100px}
@@ -897,6 +962,10 @@
     .testimonial cite{font-size:10px;letter-spacing:.3em;margin-top:24px}
     .test-dots{margin-top:32px}
 
+    /* faq */
+    .faq-q{font-size:21px;padding:22px 4px;gap:18px}
+    .faq-a{font-size:17px;padding:0 4px 24px}
+
     /* booking */
     .booking{padding:72px 22px !important}
     .booking-wrap{gap:36px}
@@ -926,6 +995,180 @@
     }
   }
 </style>
+
+<!-- ===== Structured data (SEO + GEO) ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BeautySalon",
+      "@id": "https://raiseclinique.ro/#business",
+      "name": "Raise Beauty Clinique",
+      "alternateName": "Raise Clinique",
+      "description": "Salon de înfrumusețare în București (Sector 6, lângă metrou Lujerului). Tratamente faciale premium, lifting non-chirurgical HIFU, microneedling, Carbon Peel, mezoterapie, laminare sprâncene și îndepărtare tatuaje cu laser. Dispune de o zonă de joacă supravegheată pentru copii.",
+      "url": "https://raiseclinique.ro/",
+      "image": "https://raiseclinique.ro/assets/logo.jpeg",
+      "logo": "https://raiseclinique.ro/assets/logo.jpeg",
+      "telephone": "+40727448447",
+      "priceRange": "$$",
+      "currenciesAccepted": "RON",
+      "paymentAccepted": "Cash, Card",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Șoseaua Virtuții 1C, et. 2, Sector 6",
+        "addressLocality": "București",
+        "addressRegion": "București",
+        "addressCountry": "RO"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 44.4283,
+        "longitude": 26.0395
+      },
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=%C8%98oseaua%20Virtu%C8%9Bii%201C%2C%20sector%206%2C%20Bucure%C8%99ti",
+      "areaServed": { "@type": "City", "name": "București" },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "10:00",
+          "closes": "20:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "10:00",
+          "closes": "16:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/raise.clinique/",
+        "https://www.facebook.com/profile.php?id=61591283108829"
+      ],
+      "amenityFeature": {
+        "@type": "LocationFeatureSpecification",
+        "name": "Zonă de joacă supravegheată pentru copii",
+        "value": true
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicii Raise Beauty Clinique",
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Tratamente faciale",
+            "itemListElement": [
+              { "@type": "Offer", "priceCurrency": "RON", "price": "300", "itemOffered": { "@type": "Service", "name": "Oxygen Elixir" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "450", "itemOffered": { "@type": "Service", "name": "Instant Glow Microneedling" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "350", "itemOffered": { "@type": "Service", "name": "Mezoterapie Glow Up" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "350", "itemOffered": { "@type": "Service", "name": "Hydro-Glow & Deep Cleanse" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "300", "itemOffered": { "@type": "Service", "name": "Pro-Age & Collagen Booster" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "300", "itemOffered": { "@type": "Service", "name": "Flash Radiance & Detox" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "250", "itemOffered": { "@type": "Service", "name": "Teenage Dream" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "400", "itemOffered": { "@type": "Service", "name": "Hollywood Peel (Carbon Peel)" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "1500", "itemOffered": { "@type": "Service", "name": "Pachet Hollywood Deluxe — 5 ședințe Carbon Peel" } }
+            ]
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "HIFU — lifting non-chirurgical",
+            "itemListElement": [
+              { "@type": "Offer", "priceCurrency": "RON", "price": "250", "itemOffered": { "@type": "Service", "name": "HIFU gușă" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "400", "itemOffered": { "@type": "Service", "name": "HIFU full face" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "600", "itemOffered": { "@type": "Service", "name": "HIFU full face & gușă" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "400", "itemOffered": { "@type": "Service", "name": "HIFU brațe" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "500", "itemOffered": { "@type": "Service", "name": "HIFU zona fesieră" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "600", "itemOffered": { "@type": "Service", "name": "HIFU coapse" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "500", "itemOffered": { "@type": "Service", "name": "HIFU abdomen" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "1500", "itemOffered": { "@type": "Service", "name": "HIFU full body" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "2000", "itemOffered": { "@type": "Service", "name": "HIFU full face & full body" } }
+            ]
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Îndepărtare tatuaje",
+            "itemListElement": [
+              { "@type": "Offer", "priceCurrency": "RON", "price": "400", "itemOffered": { "@type": "Service", "name": "Îndepărtare tatuaj cu laser PICO" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "500", "itemOffered": { "@type": "Service", "name": "Îndepărtare tatuaj cu substanță alcalină" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "700", "itemOffered": { "@type": "Service", "name": "Îndepărtare tatuaj laser & substanță alcalină" } }
+            ]
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Laminare sprâncene",
+            "itemListElement": [
+              { "@type": "Offer", "priceCurrency": "RON", "price": "220", "itemOffered": { "@type": "Service", "name": "Stilizare & laminare sprâncene" } }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://raiseclinique.ro/#website",
+      "url": "https://raiseclinique.ro/",
+      "name": "Raise Beauty Clinique",
+      "inLanguage": "ro-RO",
+      "publisher": { "@id": "https://raiseclinique.ro/#business" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://raiseclinique.ro/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are Raise Beauty Clinique zonă de joacă pentru copii?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Da. Clinica are o zonă de joacă supravegheată, special amenajată, astfel încât mămicile să se poată bucura de tratamente în timp ce cei mici se joacă în siguranță."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Unde se află Raise Beauty Clinique?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ne găsești pe Șoseaua Virtuții nr. 1C, etaj 2, Sector 6, București — chiar la gura de metrou Lujerului."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Care este programul de lucru?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Suntem deschiși de luni până vineri între 10:00 și 20:00, iar sâmbăta între 10:00 și 16:00. Duminica este închis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ce tratamente oferiți?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oferim tratamente faciale (Oxygen Elixir, microneedling, mezoterapie, Hollywood/Carbon Peel), lifting non-chirurgical HIFU pentru față și corp, stilizare și laminare sprâncene, precum și îndepărtarea tatuajelor cu laser PICO și substanță alcalină."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cum mă pot programa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Te poți programa direct prin formularul de pe site sau telefonic, la +40 727 448 447. Te contactăm pentru confirmare în cel mult 24 de ore."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Cât costă un tratament HIFU?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Prețurile HIFU pornesc de la 250 lei pentru zona gușă și 400 lei pentru HIFU full face, cu pachete complete pentru față și corp. Toate prețurile includ reducerile promoționale de sezon."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -935,6 +1178,7 @@
     <li><a href="#about">Despre</a></li>
     <li><a href="#services">Servicii</a></li>
     <li><a href="#promo">Promoții</a></li>
+    <li><a href="#faq">Întrebări</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-brand">
@@ -955,7 +1199,8 @@
     <li><a href="#about" data-mm><span>Despre</span><span class="num">01</span></a></li>
     <li><a href="#services" data-mm><span>Servicii</span><span class="num">02</span></a></li>
     <li><a href="#promo" data-mm><span>Promoții</span><span class="num">03</span></a></li>
-    <li><a href="#contact" data-mm><span>Contact</span><span class="num">04</span></a></li>
+    <li><a href="#faq" data-mm><span>Întrebări</span><span class="num">04</span></a></li>
+    <li><a href="#contact" data-mm><span>Contact</span><span class="num">05</span></a></li>
   </ul>
   <div class="foot">
     <a href="#contact" data-mm class="btn solid lg">Programare</a>
@@ -980,6 +1225,10 @@
       <a href="#contact" class="btn solid lg">Răsfață-te acum</a>
       <a href="#services" class="btn lg">Vezi tratamentele</a>
     </div>
+    <p class="hero-kids">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5s1.5 2 3.5 2 3.5-2 3.5-2"/><circle cx="9" cy="9.5" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="9.5" r="1" fill="currentColor" stroke="none"/></svg>
+      Avem zonă de joacă pentru cei mici — vino relaxată, copiii sunt în siguranță cât te răsfeți.
+    </p>
   </div>
   <div class="hero-right">
     <div class="logo-medallion">
@@ -1024,6 +1273,10 @@
         De la primul moment în care intri, te primim într-un spațiu calm, luminat blând,
         unde fiecare detaliu — de la aromă până la atingere — este conceput să te ridice.
       </p>
+      <p>
+        Iar pentru mămicile care vin la noi, am pregătit și o zonă de joacă pentru cei mici —
+        așa încât tratamentul tău să fie cu adevărat al tău, fără griji.
+      </p>
       <div class="signature">
         <span class="sig">Alina T.</span>
         <small>FONDATOR &amp; ESTETICIAN</small>
@@ -1067,6 +1320,11 @@
       <h4>Răsfăț autentic</h4>
       <p>Un spațiu liniștit, aromat, gândit pentru relaxare. Pleci ridicată — la propriu și la figurat.</p>
     </div>
+    <div class="pillar">
+      <div class="num">04</div>
+      <h4>Timp doar pentru tine</h4>
+      <p>Vii cu cei mici? Avem o zonă de joacă dedicată, ca tu să te poți răsfăța fără griji.</p>
+    </div>
   </div>
 </section>
 
@@ -1082,6 +1340,41 @@
     <span class="active" data-i="0"></span>
     <span data-i="1"></span>
     <span data-i="2"></span>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq reveal" id="faq" data-screen-label="faq">
+  <div class="section-head">
+    <span class="ornament short"><span class="diamond"></span></span>
+    <div class="eyebrow">Întrebări frecvente</div>
+    <h2>Ce vor să știe <em>clientele</em> noastre.</h2>
+  </div>
+  <div class="faq-list">
+    <details class="faq-item" open>
+      <summary class="faq-q">Aveți zonă de joacă pentru copii?<span class="ic"></span></summary>
+      <div class="faq-a">Da. Clinica are o zonă de joacă supravegheată, special amenajată, astfel încât mămicile să se poată bucura de tratamente în timp ce cei mici se joacă în siguranță.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Unde se află Raise Beauty Clinique?<span class="ic"></span></summary>
+      <div class="faq-a">Ne găsești pe Șoseaua Virtuții nr. 1C, etaj 2, Sector 6, București — chiar la gura de metrou Lujerului.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Care este programul de lucru?<span class="ic"></span></summary>
+      <div class="faq-a">Suntem deschiși de luni până vineri între 10:00 și 20:00, iar sâmbăta între 10:00 și 16:00. Duminica este închis.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Ce tratamente oferiți?<span class="ic"></span></summary>
+      <div class="faq-a">Oferim tratamente faciale (Oxygen Elixir, microneedling, mezoterapie, Hollywood/Carbon Peel), lifting non-chirurgical HIFU pentru față și corp, stilizare și laminare sprâncene, precum și îndepărtarea tatuajelor cu laser PICO și substanță alcalină.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Cum mă pot programa?<span class="ic"></span></summary>
+      <div class="faq-a">Te poți programa direct prin <a href="#contact">formularul de pe site</a> sau telefonic, la <a href="tel:+40727448447">+40 727 448 447</a>. Te contactăm pentru confirmare în cel mult 24 de ore.</div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Cât costă un tratament HIFU?<span class="ic"></span></summary>
+      <div class="faq-a">Prețurile HIFU pornesc de la 250 lei pentru zona gușă și 400 lei pentru HIFU full face, cu pachete complete pentru față și corp. Toate prețurile includ reducerile promoționale de sezon.</div>
+    </details>
   </div>
 </section>
 
@@ -1120,6 +1413,15 @@
         <div>
           <div class="label">Program</div>
           <div class="val">Luni – Vineri · 10:00 – 20:00<br/>Sâmbătă · 10:00 – 16:00</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="ico">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5s1.5 2 3.5 2 3.5-2 3.5-2"/><circle cx="9" cy="9.5" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="9.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </div>
+        <div>
+          <div class="label">Zonă de joacă</div>
+          <div class="val">Copiii sunt bineveniți — avem un spațiu de joacă dedicat, ca tu să te poți relaxa în liniște.</div>
         </div>
       </div>
     </div>
@@ -1193,6 +1495,7 @@
       <a href="#about">Despre</a>
       <a href="#services">Servicii</a>
       <a href="#promo">Promoții</a>
+      <a href="#faq">Întrebări</a>
       <a href="#contact">Programare</a>
     </div>
     <div class="foot-col">
@@ -1445,7 +1748,7 @@
       const slide = document.createElement('div');
       slide.className = 'ac-slide';
       const img = document.createElement('img');
-      img.alt = 'Raise Beauty Clinique';
+      img.alt = 'Raise Beauty Clinique — interior salon de înfrumusețare în București (Sector 6, Lujerului), fotografia ' + (i + 1);
       img.loading = i === 0 ? 'eager' : 'lazy';
       img.decoding = 'async';
       const dot = document.createElement('button');
