@@ -142,7 +142,7 @@ window.SERVICES_DATA = [
       },
       {
         name: "Flash Radiance & Detox",
-        old: "", now: "Preț la cerere",
+        old: "400 lei", now: "300 lei",
         tag: "Hidratare intensă, cu radiofrecvență",
         desc: `<p>Tratament pentru hidratare intensă, cu radiofrecvență — pentru un boost rapid de strălucire și detoxifiere.</p>${RF_BLOCK}`
       },
