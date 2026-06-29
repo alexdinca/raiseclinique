@@ -70,6 +70,44 @@ window.SERVICES_DATA = [
     note: "",
     items: [
       {
+        name: "Oxygen Elixir",
+        old: "400 lei", now: "300 lei",
+        tag: "Infuzie de oxigen pur și seruri active — luminozitate instantanee",
+        desc: `
+          <p>Oxigenoterapia facială este un tratament cosmetic non-invaziv care folosește oxigen pur presurizat pentru a introduce substanțe active în straturile profunde ale pielii. Procedura stimulează regenerarea celulară, oferind instantaneu luminozitate, hidratare intensă și un efect vizibil de întinerire.</p>
+          <h5>Cum funcționează procedura?</h5>
+          <p>Tratamentul se desfășoară în câțiva pași simpli:</p>
+          <ul>
+            <li><b>Curățarea tenului:</b> demachiere profundă și o exfoliere ușoară pentru eliminarea celulelor moarte.</li>
+            <li><b>Aplicarea cocktailului de seruri:</b> substanțe adaptate nevoilor pielii (acid hialuronic, vitamine, antioxidanți sau peptide).</li>
+            <li><b>Infuzia de oxigen:</b> cu un aplicator special (aerograf), oxigenul medical de puritate înaltă (98%) este pulsat sub presiune direct pe piele, împingând serurile adânc în epidermă fără a înțepa sau agresa pielea.</li>
+          </ul>
+          <h5>Beneficii principale</h5>
+          <ul>
+            <li><b>Hidratare profundă:</b> redă instantaneu elasticitatea tenului uscat și deshidratat.</li>
+            <li><b>Luminozitate imediată:</b> elimină aspectul de ten obosit sau tern — perfect înainte de evenimente importante.</li>
+            <li><b>Efect anti-aging:</b> estompează liniile fine și ridurile de expresie prin stimularea producției naturale de colagen.</li>
+            <li><b>Efect antiseptic:</b> oxigenul purifică straturile pielii, reducând bacteriile care cauzează acneea.</li>
+            <li><b>Fără recuperare:</b> tratament complet nedureros — poți aplica machiaj imediat după ședință.</li>
+          </ul>
+          <h5>Cui se adresează</h5>
+          <p>Procedura este sigură pentru toate tipurile de ten și este recomandată în special pentru:</p>
+          <ul>
+            <li>Persoane cu tenul afectat de fumat, poluare sau stres.</li>
+            <li>Piele deshidratată sau afectată de expunerea prelungită la soare.</li>
+            <li>Prevenirea primelor semne de îmbătrânire celulară.</li>
+          </ul>
+          <h5>Contraindicații</h5>
+          <ul>
+            <li>Infecții cutanate bacteriene, virale sau fungice în zona feței (ex. puseu activ de Herpes Simplex).</li>
+            <li>Răni deschise, arsuri solare recente sau piele vizibil deteriorată și fragilă.</li>
+            <li>Acnee inflamatorie severă (chistică), eczeme sau dermatite acute care pot fi agravate de manipularea mecanică.</li>
+            <li>Rozacee severă în fază acută, unde fluxul intens de oxigen sau ingredientele active pot stimula excesiv circulația sangvină locală.</li>
+            <li>Sarcină și alăptare.</li>
+            <li>Boli oncologice.</li>
+          </ul>`
+      },
+      {
         name: "Instant Glow Microneedling",
         old: "600 lei", now: "450 lei",
         tag: "Inducție de colagen prin micro-înțepături controlate",
@@ -196,6 +234,39 @@ window.SERVICES_DATA = [
             <li>Tratamente recente cu retinoizi/retinol (ex. Roaccutane).</li>
             <li>Afecțiuni fotosensibilizante (lupus), epilepsie, diabet dezechilibrat sau boli de inimă.</li>
             <li>Expunere recentă intensă la soare (arsuri solare).</li>
+          </ul>`
+      },
+      {
+        name: "Pachet Hollywood Deluxe",
+        old: "2000 lei", now: "1500 lei",
+        tag: "5 ședințe Carbon Peel — pentru un ten radiant",
+        desc: `
+          <p>Pachetul Hollywood Deluxe include <b>5 ședințe Carbon Peel</b>, pentru un ten radiant!</p>
+          <p>Carbon Peel (cunoscut și ca Hollywood Peel sau Carbon Laser Facial) este un tratament dermatologic non-invaziv, ideal pentru curățarea profundă, exfolierea și întinerirea rapidă a tenului. Procedura combină o mască pe bază de cărbune activ cu tehnologia laser Nd:YAG pentru a distruge impuritățile din pori și a stimula colagenul.</p>
+          <h5>Cum funcționează</h5>
+          <p>Procedura se desfășoară rapid, în trei etape principale:</p>
+          <ul>
+            <li><b>Aplicarea carbonului:</b> o loțiune neagră cu microparticule de carbon activ este întinsă pe față și lăsată să pătrundă în pori, unde absoarbe sebumul și celulele moarte.</li>
+            <li><b>Încălzirea laser:</b> laserul trece blând peste piele pentru a încălzi carbonul și a-l fixa în pori.</li>
+            <li><b>Vaporizarea prin laser:</b> pe modul pulsație rapidă, fasciculul este atras de culoarea neagră a carbonului, distrugând instantaneu particulele împreună cu impuritățile blocate în pori.</li>
+          </ul>
+          <h5>Beneficii majore</h5>
+          <ul>
+            <li><b>Curățare profundă:</b> elimină sebumul, punctele negre și bacteriile responsabile de acnee.</li>
+            <li><b>Micșorarea porilor:</b> căldura laserului contractă porii dilatați.</li>
+            <li><b>Exfoliere și luminozitate:</b> piele catifelată și radiantă imediat după ședință.</li>
+            <li><b>Efect anti-aging:</b> stimulează colagenul, reducând liniile fine și îmbunătățind elasticitatea.</li>
+          </ul>
+          <p>Fără timp de recuperare — o ușoară roșeață câteva ore, apoi îți reiei activitățile imediat. Excelent pentru ten gras, mixt sau predispus la acnee, dar și pentru un plus de strălucire înainte de un eveniment important.</p>
+          <h5>Protocol</h5>
+          <p>Carbon Peel se efectuează în serii de 4–6 ședințe, la 1–2 săptămâni. Pentru menținerea rezultatelor, o ședință lunară.</p>
+          <h5>Contraindicații</h5>
+          <ul>
+            <li><b>Sarcină și alăptare:</b> procedura este strict interzisă în aceste perioade.</li>
+            <li><b>Infecții active sau leziuni:</b> herpes, eczeme, răni deschise sau arsuri în zona tratată.</li>
+            <li><b>Tratamente cu retinoizi/retinol:</b> nu se efectuează după utilizare recentă (ex. Roaccutane).</li>
+            <li><b>Afecțiuni fotosensibilizante:</b> lupus, epilepsie, diabet dezechilibrat sau boli de inimă.</li>
+            <li><b>Expunere recentă la soare:</b> nu este indicată pe piele cu arsuri solare recente.</li>
           </ul>`
       }
     ]

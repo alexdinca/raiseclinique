@@ -5,6 +5,7 @@ const twilio = require('twilio');
 // (the booking dropdown is populated from that file at runtime).
 const ALLOWED_TREATMENTS = new Set([
   // Tratamente faciale
+  'Oxygen Elixir',
   'Instant Glow Microneedling',
   'Mezoterapie Glow Up',
   'Hydro-Glow & Deep Cleanse',
@@ -12,6 +13,7 @@ const ALLOWED_TREATMENTS = new Set([
   'Flash Radiance & Detox',
   'Teenage Dream',
   'Hollywood Peel',
+  'Pachet Hollywood Deluxe',
   // Îndepărtare tatuaje
   'Îndepărtare cu laser PICO',
   'Îndepărtare cu substanță alcalină',
