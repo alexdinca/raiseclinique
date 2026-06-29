@@ -234,13 +234,32 @@
     overflow:hidden;
   }
   .about-image::before{
-    content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.4);z-index:2;
+    content:"";position:absolute;inset:18px;border:1px solid rgba(255,255,255,.4);z-index:2;pointer-events:none;
   }
   .about-image .ac-track{
     position:absolute;inset:0;display:flex;
+    overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;-ms-overflow-style:none;
+    cursor:grab;
   }
-  .about-image .ac-slide{flex:0 0 100%;height:100%}
-  .about-image .ac-slide img{width:100%;height:100%;object-fit:cover;display:block}
+  .about-image .ac-track::-webkit-scrollbar{display:none}
+  .about-image .ac-track.grabbing{cursor:grabbing}
+  .about-image .ac-slide{flex:0 0 100%;height:100%;scroll-snap-align:center}
+  .about-image .ac-slide img{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;-webkit-user-drag:none;user-select:none}
+  .about-image .ac-dots{
+    position:absolute;left:0;right:0;bottom:22px;z-index:3;
+    display:flex;justify-content:center;gap:9px;pointer-events:none;
+  }
+  .about-image .ac-dot{
+    width:8px;height:8px;padding:0;border-radius:50%;
+    border:1px solid rgba(255,255,255,.9);background:rgba(255,255,255,.4);
+    cursor:pointer;pointer-events:auto;
+    box-shadow:0 1px 4px rgba(42,35,26,.45);
+    transition:background .25s,transform .25s;
+  }
+  .about-image .ac-dot:hover{background:rgba(255,255,255,.75)}
+  .about-image .ac-dot.active{background:#fff;transform:scale(1.3)}
   .about-image .badge{
     position:absolute;right:-40px;bottom:60px;
     width:170px;height:170px;border-radius:50%;
@@ -990,7 +1009,8 @@
 <section class="about reveal" id="about" data-screen-label="about">
   <div class="about-grid">
     <div class="about-image">
-      <div class="ac-track" id="acTrack" role="img" aria-label="Galerie foto Raise Beauty Clinique"></div>
+      <div class="ac-track" id="acTrack" aria-label="Galerie foto Raise Beauty Clinique"></div>
+      <div class="ac-dots" id="acDots"></div>
     </div>
     <div class="about-text">
       <div class="eyebrow">Despre noi</div>
@@ -1397,10 +1417,11 @@
 </script>
 
 <script>
-  // ===== About photo carousel (auto-advancing, self-healing) =====
+  // ===== About photo gallery — scroll-snap, dots, autoplay =====
   (function(){
     const track = document.getElementById('acTrack');
-    if (!track) return;
+    const dotsWrap = document.getElementById('acDots');
+    if (!track || !dotsWrap) return;
     const base = 'assets/about-carousel/';
     const photos = [
       'clinique.jpg','2.jpg','3.jpg',
@@ -1408,56 +1429,102 @@
       'DSC02373.jpg','DSC02683.jpg','DSC02731.jpg','DSC03366.jpg'
     ];
     const INTERVAL = 3500;
-    // One slide per photo. If a photo is removed from the folder its image
-    // 404s and the slide drops itself, so the carousel never shows a gap.
-    photos.forEach((name) => {
+
+    const slides = () => [...track.querySelectorAll('.ac-slide')];
+    const dots   = () => [...dotsWrap.querySelectorAll('.ac-dot')];
+    const indexNow = () => Math.round(track.scrollLeft / (track.clientWidth || 1));
+    function syncDots(){
+      const idx = indexNow();
+      dots().forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+    function goTo(i, smooth){
+      const n = slides().length;
+      if (!n) return;
+      i = Math.max(0, Math.min(i, n - 1));
+      track.scrollTo({ left: i * track.clientWidth, behavior: smooth === false ? 'auto' : 'smooth' });
+    }
+
+    // One slide + one dot per photo. If a photo is removed from the folder
+    // its image 404s and both its slide and its dot drop out automatically.
+    photos.forEach((name, i) => {
       const slide = document.createElement('div');
       slide.className = 'ac-slide';
       const img = document.createElement('img');
       img.alt = 'Raise Beauty Clinique';
-      img.loading = 'lazy';
+      img.loading = i === 0 ? 'eager' : 'lazy';
       img.decoding = 'async';
-      img.addEventListener('error', () => slide.remove());
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'ac-dot';
+      dot.setAttribute('aria-label', 'Fotografia ' + (i + 1));
+      dot.addEventListener('click', () => { goTo(slides().indexOf(slide)); poke(); });
+      img.addEventListener('error', () => { slide.remove(); dot.remove(); syncDots(); });
       img.src = base + encodeURIComponent(name);
       slide.appendChild(img);
       track.appendChild(slide);
+      dotsWrap.appendChild(dot);
     });
-    // Preload the slide that will animate into view next.
-    function warmNext(){
-      const next = track.children[1];
-      if (!next) return;
-      const p = new Image(); p.src = next.querySelector('img').getAttribute('src');
-    }
-    let timer = null, animating = false;
-    function advance(){
-      if (animating || track.children.length < 2) return;
-      animating = true;
-      track.style.transition = 'transform .9s cubic-bezier(.65,.05,.36,1)';
-      track.style.transform = 'translateX(-100%)';
-    }
-    track.addEventListener('transitionend', (e) => {
-      if (e.propertyName !== 'transform') return;
-      // Conveyor: move the first slide to the end, snap back instantly.
-      track.style.transition = 'none';
-      track.appendChild(track.firstElementChild);
-      track.style.transform = 'translateX(0)';
-      void track.offsetWidth; // force reflow so the next move animates
-      animating = false;
-      warmNext();
+
+    // keep the active dot in sync while scrolling (manual or auto)
+    let raf = null;
+    track.addEventListener('scroll', () => {
+      if (raf) return;
+      raf = requestAnimationFrame(() => { raf = null; syncDots(); });
     });
-    function start(){ if (timer) return; warmNext(); timer = setInterval(advance, INTERVAL); }
+    window.addEventListener('resize', () => goTo(indexNow(), false));
+
+    // autoplay — ping-pong, so it never has to rewind to the start
+    let timer = null, dir = 1, inView = false, pokeT = null;
+    function tick(){
+      const n = slides().length;
+      if (n < 2) return;
+      let i = indexNow() + dir;
+      if (i > n - 1) { dir = -1; i = n - 2; }
+      else if (i < 0) { dir = 1; i = 1; }
+      goTo(i);
+      const ahead = slides()[i + dir];
+      if (ahead) { const p = new Image(); p.src = ahead.querySelector('img').getAttribute('src'); }
+    }
+    function play(){ if (timer || !inView) return; timer = setInterval(tick, INTERVAL); }
     function stop(){ clearInterval(timer); timer = null; }
+    function poke(){ stop(); clearTimeout(pokeT); pokeT = setTimeout(play, 6000); }
+
+    // pause on hover; pause briefly after a touch interaction
+    track.addEventListener('mouseenter', stop);
+    track.addEventListener('mouseleave', play);
+    track.addEventListener('touchstart', stop, { passive: true });
+    track.addEventListener('touchend', poke, { passive: true });
+
+    // drag-to-scroll with a mouse (touch & trackpad already scroll natively)
+    let drag = false, startX = 0, startLeft = 0;
+    track.addEventListener('pointerdown', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      drag = true; startX = e.clientX; startLeft = track.scrollLeft;
+      track.classList.add('grabbing'); track.style.scrollSnapType = 'none'; stop();
+      try { track.setPointerCapture(e.pointerId); } catch (_) {}
+    });
+    track.addEventListener('pointermove', (e) => {
+      if (drag) track.scrollLeft = startLeft - (e.clientX - startX);
+    });
+    function endDrag(){
+      if (!drag) return;
+      drag = false;
+      track.classList.remove('grabbing'); track.style.scrollSnapType = '';
+      goTo(indexNow()); poke();
+    }
+    track.addEventListener('pointerup', endDrag);
+    track.addEventListener('pointercancel', endDrag);
+
+    // run only while the gallery is on screen
     const frame = track.closest('.about-image');
     if ('IntersectionObserver' in window) {
       new IntersectionObserver((ents) => {
-        ents.forEach((en) => { if (en.isIntersecting) { start(); } else { stop(); } });
+        ents.forEach((en) => { inView = en.isIntersecting; if (inView) { play(); } else { stop(); } });
       }, { threshold: 0.2 }).observe(frame);
     } else {
-      start();
+      inView = true; play();
     }
-    // pause while hovering
-    frame.addEventListener('mouseenter', stop);
-    frame.addEventListener('mouseleave', start);
+    syncDots();
   })();
 </script>
 
