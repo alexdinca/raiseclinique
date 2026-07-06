@@ -480,6 +480,13 @@
   .svc-empty p{
     font-family:"Cormorant Garamond",serif;font-size:24px;font-style:italic;color:var(--ink-soft);
   }
+  .svc-note{
+    text-align:center;font-family:"Cormorant Garamond",serif;font-size:17px;font-style:italic;
+    color:var(--ink-soft);border:1px solid var(--gold-soft);
+    padding:18px 24px;margin:0 0 30px;max-width:760px;margin-left:auto;margin-right:auto;
+    line-height:1.5;
+  }
+  .svc-note b{color:var(--gold-2);font-weight:600;font-style:normal}
 
   /* MODAL */
   .svc-modal{
@@ -1631,6 +1638,12 @@
           <p>${cat.note || 'Serviciu disponibil curând.'}</p>
         </div>`;
       } else {
+        if (cat.note) {
+          const noteEl = document.createElement('p');
+          noteEl.className = 'svc-note';
+          noteEl.innerHTML = cat.note;
+          panel.appendChild(noteEl);
+        }
         cat.items.forEach((it, ii) => {
           const card = document.createElement('article');
           card.className = 'svc-card';

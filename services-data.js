@@ -274,7 +274,7 @@ window.SERVICES_DATA = [
   {
     id: "tatuaje",
     label: "Îndepărtare tatuaje",
-    note: "",
+    note: "<b>!</b> Valabil pentru tatuaje semipermanente: sprâncene, buze, eyeliner, și tatuaje de dimensiuni mici. Pentru tatuaje de dimensiuni mari sau foarte mari, cereți o <b>OFERTĂ personalizată</b> pe WhatsApp la 0727 448 447!",
     items: [
       {
         name: "Îndepărtare cu laser PICO",
@@ -400,131 +400,49 @@ window.SERVICES_DATA = [
     label: "HIFU",
     note: "",
     items: [
-      { name: "HIFU gușă", old: "350 lei", now: "250 lei", tag: "Lifting non-chirurgical al zonei submentoniere", desc: HIFU_GENERIC },
-      { name: "HIFU full face", old: "500 lei", now: "400 lei", tag: "Lifting facial complet, fără chirurgie", desc: HIFU_GENERIC },
-      { name: "HIFU full face & gușă", old: "850 lei", now: "600 lei", tag: "Față completă plus zona submentonieră", desc: HIFU_GENERIC },
+      { name: "HIFU gușă", old: "400 lei", now: "300 lei", tag: "Lifting non-chirurgical al zonei submentoniere", desc: HIFU_GENERIC },
+      { name: "HIFU full face", old: "600 lei", now: "500 lei", tag: "Lifting facial complet, fără chirurgie", desc: HIFU_GENERIC },
+      { name: "HIFU full face & gușă", old: "1000 lei", now: "800 lei", tag: "Față completă plus zona submentonieră", desc: HIFU_GENERIC },
       {
-        name: "HIFU brațe", old: "500 lei", now: "400 lei",
-        tag: "Tonifiere și lifting pentru zona tricepsului",
+        name: "HIFU o zonă corp", old: "600 lei", now: "500 lei",
+        tag: "O singură zonă, la alegere",
         desc: `
-          <p>HIFU pentru brațe este o procedură non-invazivă ideală pentru eliminarea aspectului de „piele lăsată” (aripi de liliac) din zona tricepsului și pentru distrugerea depozitelor localizate de grăsime. Ultrasunetele focalizate pătrund în straturile profunde, stimulând colagenul și elastina, pentru lifting, tonifiere și remodelare fără operație, ace sau perioadă de recuperare.</p>
-          <h5>Cum funcționează pe brațe</h5>
+          <p>HIFU corp este o procedură non-invazivă pentru topirea grăsimii localizate, reducerea celulitei și liftingul pielii lăsate. Ultrasunetele focalizate pătrund adânc în țesut, distrugând celulele adipoase și stimulând colagenul, fără a afecta suprafața pielii și fără timp de recuperare.</p>
+          <h5>Principalele zone</h5>
           <ul>
-            <li><b>Lifting și fermitate:</b> contractă fibrele de colagen existente și declanșează formarea unora noi.</li>
-            <li><b>Lipoliză (slăbire localizată):</b> distruge membranele celulelor adipoase, eliminate apoi prin sistemul limfatic.</li>
-            <li><b>Timp zero de recuperare:</b> pielea nu este lezată la suprafață.</li>
+            <li>Abdomen</li>
+            <li>Brațe</li>
+            <li>Zona fesieră</li>
+            <li>Coapse (față/spate, interior/exterior)</li>
+            <li>Spate superior (linia sutienului)</li>
+            <li>Spate inferior (zona lombară)</li>
+            <li>Flancuri (zona șoldurilor)</li>
           </ul>
-          <p>Senzație: disconfort minim, ca o căldură locală. Primele efecte apar imediat, rezultatul final în 2–3 luni.</p>
+          <p>Prețul de 500 lei este valabil pentru o singură zonă din lista de mai sus, la alegere.</p>
           <h5>Contraindicații</h5>
           <ul>
-            <li>Infecții cutanate active (răni deschise, herpes, infecții bacteriene/fungice).</li>
-            <li>Sarcină sau alăptare.</li>
-            <li>Boli autoimune sau tulburări de coagulare.</li>
-            <li>Diabet necontrolat; epilepsie.</li>
-            <li>Pacemaker / stimulatoare electrice; implanturi metalice.</li>
-            <li>Afecțiuni oncologice; dermatite, psoriazis activ sau acnee severă în zonă.</li>
-          </ul>`
-      },
-      {
-        name: "HIFU zona fesieră", old: "600 lei", now: "500 lei",
-        tag: "Efect „butt-lift”, tonifiere și reducerea celulitei",
-        desc: `
-          <p>HIFU pentru zona fesieră este o procedură non-invazivă pentru un efect de „butt-lift”, tonifiere intensă și reducerea celulitei. Ultrasunetele focalizate penetrează straturile profunde, stimulând colagenul nou și topind micro-depozitele de grăsime localizată.</p>
-          <h5>Beneficii principale</h5>
-          <ul>
-            <li><b>Lifting nechirurgical:</b> ridică țesuturile lăsate prin scurtarea fibrelor de colagen.</li>
-            <li><b>Tonifiere profundă:</b> piele mai fermă, compactă și elastică.</li>
-            <li><b>Diminuarea celulitei:</b> netezește aspectul de „coajă de portocală”.</li>
-            <li><b>Remodelare și contur:</b> formă mai bombată și mai bine definită.</li>
-            <li><b>Fără timp de recuperare.</b></li>
-          </ul>
-          <p>Efect parțial imediat; rezultate maxime în 2–3 luni. O singură procedură se poate menține până la un an.</p>
-          <h5>Contraindicații importante</h5>
-          <ul>
             <li>Sarcină și alăptare.</li>
-            <li>Afecțiuni vasculare severe (tromboză, varice pronunțate în zonă).</li>
-            <li>Tulburări de coagulare.</li>
+            <li>Afecțiuni vasculare severe, tulburări de coagulare / anticoagulante.</li>
             <li>Boli autoimune active sau epilepsie.</li>
-            <li>Implanturi metalice sau fillere permanente în zona fesieră.</li>
-          </ul>`
-      },
-      {
-        name: "HIFU coapse", old: "750 lei", now: "600 lei",
-        tag: "Topirea grăsimii localizate, celulită și lifting",
-        desc: `
-          <p>HIFU pentru coapse este o procedură non-invazivă pentru topirea depozitelor de grăsime localizată, eliminarea celulitei și liftingul pielii lăsate. Ultrasunetele focalizate pătrund adânc în țesut, stimulând colagenul și distrugând celulele adipoase fără a afecta suprafața pielii.</p>
-          <h5>Beneficii</h5>
-          <ul>
-            <li><b>Lipoliză:</b> distruge celulele de grăsime (coapse interior, exterior, față sau spate).</li>
-            <li><b>Lifting și fermitate:</b> stimulează neocolageneza, tratând pielea flască.</li>
-            <li><b>Reducerea celulitei:</b> uniformizează aspectul și îmbunătățește elasticitatea.</li>
-            <li><b>Non-invaziv:</b> fără incizii, ace sau recuperare.</li>
-          </ul>
-          <h5>Contraindicații</h5>
-          <ul>
-            <li>Afecțiuni venoase severe (varice proeminente, tromboflebită profundă).</li>
-            <li>Leziuni cutanate (răni deschise, infecții, dermatite, inflamații).</li>
-            <li>Injectări cu silicon sau alte substanțe permanente în zonă.</li>
-            <li>Sarcină și alăptare.</li>
             <li>Pacemaker, defibrilatoare sau implanturi metalice în zonă.</li>
-            <li>Tulburări de coagulare / tratament anticoagulant.</li>
-            <li>Boli sistemice grave (cancer, epilepsie, diabet decompensat, afecțiuni endocrine).</li>
-            <li>Boli autoimune active (lupus, vitiligo, psoriazis, Zona Zoster).</li>
+            <li>Boli oncologice active; diabet decompensat.</li>
+            <li>Răni deschise, infecții, dermatite sau iritații în zona tratată.</li>
           </ul>`
       },
       {
-        name: "HIFU abdomen", old: "650 lei", now: "500 lei",
-        tag: "Reducerea stratului adipos și tonifiere abdominală",
+        name: "HIFU full body (6 zone la alegere)", old: "3600 lei", now: "3000 lei",
+        tag: "Remodelare corporală — 6 zone la alegere",
         desc: `
-          <p>HIFU pentru abdomen este o procedură non-invazivă pentru reducerea stratului adipos localizat, eliminarea pielii laxe și tonifierea profundă a zonei abdominale. Ultrasunetele focalizate acționează direct în profunzimea țesutului, fără a afecta suprafața pielii.</p>
-          <h5>Cum funcționează pe abdomen</h5>
-          <ul>
-            <li><b>Distrugerea celulelor adipoase:</b> ultrasunetele sparg membranele celulelor de grăsime, eliminate apoi natural.</li>
-            <li><b>Stimularea colagenului:</b> căldura contractă fibrele elastice și declanșează colagen nou.</li>
-            <li><b>Skin tightening:</b> piele mai fermă, mai netedă și contur abdominal îmbunătățit.</li>
-          </ul>
-          <h5>Beneficii principale</h5>
-          <ul>
-            <li>Fără chirurgie, anestezie, incizii sau recuperare.</li>
-            <li>Tratament țintit (abdomen inferior sub ombilic sau superior).</li>
-            <li>Excelent post-sarcină sau după o slăbire rapidă.</li>
-          </ul>
-          <h5>Contraindicații</h5>
-          <ul>
-            <li>Sarcină și alăptare.</li>
-            <li>Dispozitive electronice implantate (pacemaker, defibrilatoare, stimulatoare).</li>
-            <li>Implanturi metalice în zonă, inclusiv steriletul metalic (DIU).</li>
-            <li>Boli oncologice active.</li>
-            <li>Răni deschise, dermatite, iritații, infecții sau cicatrici recente pe abdomen.</li>
-            <li>Tulburări de coagulare / anticoagulante.</li>
-            <li>Boli autoimune active (lupus, vitiligo, scleroză multiplă, psoriazis).</li>
-            <li>Diabet decompensat, afecțiuni endocrine grave sau epilepsie.</li>
-          </ul>`
-      },
-      {
-        name: "HIFU full body", old: "2000 lei", now: "1500 lei",
-        tag: "Remodelare corporală completă — mai multe zone",
-        desc: `
-          <p>HIFU Full Body este o procedură non-invazivă pentru remodelare corporală, reducerea grăsimii localizate și liftingul pielii. Ultrasunetele focalizate pătrund adânc în țesut, distrugând celulele adipoase și stimulând colagenul și elastina.</p>
+          <p>HIFU Full Body este o procedură non-invazivă pentru remodelare corporală, reducerea grăsimii localizate și liftingul pielii, aplicată pe 6 dintre zonele principale, la alegere.</p>
           <h5>Cum funcționează</h5>
           <ul>
             <li><b>Topirea grăsimii:</b> pierdere de până la 4 cm în circumferință pe ședință.</li>
             <li><b>Lifting non-chirurgical:</b> acționează pe stratul SMAS, strângând pielea lăsată.</li>
             <li><b>Neocolageneză:</b> regenerare a colagenului timp de 3–6 luni după tratament.</li>
           </ul>
-          <h5>Zone incluse</h5>
+          <h5>Zone la alegere</h5>
           <ul>
-            <li>Abdomen și talie (flancuri)</li>
-            <li>Coapse (interior, exterior)</li>
-            <li>Fese</li>
-            <li>Brațe (zona inferioară)</li>
-            <li>Spate (zona liniei sutienului)</li>
-          </ul>
-          <h5>Avantaje</h5>
-          <ul>
-            <li>Fără timp de recuperare.</li>
-            <li>Metodă aprobată FDA, sigură și non-chirurgicală.</li>
-            <li>Rezultate de lungă durată — efect maxim la 2–3 luni.</li>
+            <li>Abdomen, brațe, zona fesieră, coapse (față/spate, interior/exterior), spate superior (linia sutienului), spate inferior (zona lombară), flancuri (zona șoldurilor) — 6 dintre acestea, la alegere.</li>
           </ul>
           <h5>Contraindicații</h5>
           <ul>
@@ -535,7 +453,25 @@ window.SERVICES_DATA = [
             <li>Boli autoimune active; tulburări de coagulare.</li>
           </ul>`
       },
-      { name: "HIFU full face & full body", old: "2600 lei", now: "2000 lei", tag: "Pachetul complet — față și corp", desc: HIFU_GENERIC }
+      {
+        name: "HIFU full body (toate cele 8 zone) + full face & gușă CADOU", old: "5800 lei", now: "4000 lei",
+        tag: "Pachetul complet — toate zonele corpului, plus fața și gușa cadou",
+        desc: `
+          <p>Pachetul complet HIFU: toate cele 8 zone de corp, plus HIFU full face & gușă oferite cadou. Remodelare corporală completă, reducerea grăsimii localizate și lifting facial și corporal, fără chirurgie.</p>
+          <h5>Zone incluse (8 zone corp)</h5>
+          <ul>
+            <li>Abdomen, brațe, zona fesieră, coapse (față/spate, interior/exterior), spate superior (linia sutienului), spate inferior (zona lombară), flancuri (zona șoldurilor).</li>
+          </ul>
+          <p><b>Cadou inclus:</b> HIFU full face & gușă.</p>
+          <h5>Contraindicații</h5>
+          <ul>
+            <li>Sarcină sau alăptare.</li>
+            <li>Stimulatoare cardiace; implanturi metalice în zona tratată.</li>
+            <li>Afecțiuni oncologice sau cronice severe.</li>
+            <li>Răni deschise pe piele.</li>
+            <li>Boli autoimune active; tulburări de coagulare.</li>
+          </ul>`
+      }
     ]
   },
   {
