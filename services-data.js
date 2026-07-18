@@ -206,6 +206,93 @@ window.SERVICES_DATA = [
           </ul>`
       },
       {
+        name: "Cuperosis Ritual",
+        old: "350 lei", now: "250 lei",
+        tag: "Ritual calmant pentru ten cuperozic — reduce roșeața și inflamația",
+        desc: `
+          <p>Tratament pentru pielea cuperozică: curățare blândă, hidratare cu oxigen hiperbaric, infuzie de acid hialuronic, masaj soft cu cremă specifică tenului cuperozic, ciocan rece cu mască calmantă și SPF.</p>
+          <p>Cuperoza (sau rozaceea) este caracterizată prin roșeață temporară sau permanentă și vase de sânge fine, vizibile pe obraji, nas sau bărbie. Gestionarea acestei afecțiuni necesită o rutină de îngrijire extrem de blândă, pentru a calma inflamația și a întări bariera pielii.</p>
+          <h5>Rutina zilnică recomandată</h5>
+          <ul>
+            <li><b>Curățare blândă:</b> folosește doar loțiuni micelare sau geluri de curățare fără spumă abundentă.</li>
+            <li><b>Apă călduță:</b> spală fața exclusiv cu apă la temperatura camerei. Evită apa fierbinte.</li>
+            <li><b>Uscare prin tamponare:</b> tapotează tenul ușor cu un prosop curat din bumbac. Nu freca pielea.</li>
+            <li><b>Hidratare specifică:</b> aplică creme destinate tenului cuperozic sau sensibil.</li>
+            <li><b>Protecție solară:</b> folosește zilnic o cremă cu SPF 50+ pe bază de filtre minerale.</li>
+          </ul>
+          <h5>Ingrediente active utile</h5>
+          <ul>
+            <li><b>Niacinamidă:</b> reduce inflamația și fortifică bariera naturală a pielii.</li>
+            <li><b>Acid hialuronic:</b> hidratează intens, calmează inflamația și întărește bariera cutanată.</li>
+            <li><b>Extracte botanice:</b> aloe vera, ginkgo biloba, centella asiatica și alantoina calmează roșeața.</li>
+            <li><b>Pigmenți verzi:</b> cremele sau serurile cu reflexe verzi neutralizează vizual nuanțele de roșu.</li>
+          </ul>
+          <h5>Beneficiile ciocanului rece</h5>
+          <ul>
+            <li><b>Vasoconstricție rapidă:</b> contractă vasele de sânge dilatate, scăzând intensitatea roșeții.</li>
+            <li><b>Efect antiinflamator:</b> calmează senzația de arsură, usturime și căldură locală.</li>
+            <li><b>Efectul „capcană”:</b> sigilează în piele serurile calmante aplicate anterior, prelungindu-le efectul.</li>
+            <li><b>Reducerea edemului:</b> diminuează umflăturile și congestia de la nivelul feței.</li>
+          </ul>
+          <h5>Ce trebuie să eviți</h5>
+          <ul>
+            <li><b>Exfolianți abrazivi:</b> elimină complet scruburile fizice și periile dure de curățare.</li>
+            <li><b>Ingrediente iritante:</b> evită produsele care conțin alcool denaturat, parfum sau mentol.</li>
+            <li><b>Factori declanșatori:</b> limitează alimentele foarte condimentate, băuturile fierbinți și alcoolul.</li>
+            <li><b>Temperaturi extreme:</b> protejează-ți fața de trecerile bruște de la cald la frig și de vântul puternic.</li>
+          </ul>
+          <h5>Protocol</h5>
+          <p>Serii de 4–6 ședințe, la 1–2 săptămâni. Pentru menținere, o ședință lunară.</p>
+          <h5>Contraindicații</h5>
+          <ul>
+            <li>Sarcină și alăptare.</li>
+            <li>Infecții active sau leziuni (herpes, eczeme, răni deschise, arsuri).</li>
+            <li>Tratamente recente cu retinoizi/retinol (ex. Roaccutane).</li>
+            <li>Afecțiuni fotosensibilizante (lupus), epilepsie, diabet dezechilibrat sau boli de inimă.</li>
+            <li>Expunere recentă intensă la soare (arsuri solare).</li>
+          </ul>`
+      },
+      {
+        name: "Gold Hollywood Combo",
+        old: "750 lei", now: "550 lei",
+        tag: "Hidrafacial, radiofrecvență și Hollywood Peel — ritualul complet",
+        desc: `
+          <p>Ritual de curățare profundă, extracții cu spatula cu ultrasunete, hidrafacial, radiofrecvență pentru stimularea colagenului și oxigen hiperbaric pentru fermitate și hidratare — <b>împreună cu Hollywood Peel</b>, pentru închiderea porilor și luminozitate.</p>
+          <h5>Radiofrecvență facială</h5>
+          <p>Tratament estetic non-invaziv care folosește unde electromagnetice pentru a încălzi straturile profunde ale pielii, stimulând producția de colagen și elastină pentru un efect de lifting și fermitate — fără ace și fără perioadă de recuperare.</p>
+          <h5>Cum funcționează?</h5>
+          <ul>
+            <li><b>Încălzire controlată:</b> dispozitivul livrează energie termică în derm (stratul profund).</li>
+            <li><b>Contractarea fibrelor:</b> căldura contractă instantaneu fibrele vechi de colagen.</li>
+            <li><b>Neocolageneză:</b> celulele sunt activate pentru a produce colagen nou pe termen lung.</li>
+          </ul>
+          <h5>Beneficii majore</h5>
+          <ul>
+            <li><b>Efect de lifting:</b> redefinește conturul feței și linia mandibulară.</li>
+            <li><b>Reducerea ridurilor:</b> diminuează ridurile fine din zona ochilor, gurii și gâtului.</li>
+            <li><b>Fermitate:</b> combate laxitatea cutanată și îmbunătățește textura.</li>
+            <li><b>Pori și cicatrici:</b> varianta fracționată ajută la micșorarea porilor și estomparea urmelor post-acneice.</li>
+          </ul>
+          <h5>Hollywood Peel (Carbon Peel)</h5>
+          <p>Tratament dermatologic non-invaziv, ideal pentru curățarea profundă, exfolierea și întinerirea rapidă a tenului. Combină o mască pe bază de cărbune activ cu tehnologia laser Nd:YAG pentru a distruge impuritățile din pori și a stimula colagenul.</p>
+          <ul>
+            <li><b>Curățare profundă:</b> elimină sebumul, punctele negre și bacteriile responsabile de acnee.</li>
+            <li><b>Micșorarea porilor:</b> căldura contractă porii dilatați.</li>
+            <li><b>Exfoliere și luminozitate:</b> piele catifelată și radiantă imediat după ședință.</li>
+            <li><b>Efect anti-aging:</b> stimulează colagenul, reducând liniile fine.</li>
+          </ul>
+          <h5>Protocol</h5>
+          <p>Serii de 4–6 ședințe, la 1–2 săptămâni. Pentru menținere, o ședință lunară.</p>
+          <h5>Contraindicații</h5>
+          <ul>
+            <li>Sarcină și alăptare.</li>
+            <li>Infecții active sau leziuni (herpes, eczeme, răni deschise, arsuri).</li>
+            <li>Tratamente recente cu retinoizi/retinol (ex. Roaccutane).</li>
+            <li>Afecțiuni fotosensibilizante (lupus), epilepsie, diabet dezechilibrat sau boli de inimă.</li>
+            <li>Expunere recentă intensă la soare (arsuri solare).</li>
+          </ul>`
+      },
+      {
         name: "Hollywood Peel",
         old: "500 lei", now: "400 lei",
         tag: "Carbon Peel — curățare profundă și strălucire instantanee",
