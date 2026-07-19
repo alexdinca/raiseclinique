@@ -136,7 +136,7 @@ module.exports = async function handler(req, res) {
     const resend = new Resend(process.env.RESEND_API_KEY);
     await resend.emails.send({
       from:    process.env.EMAIL_FROM,
-      to:      process.env.CLINIC_EMAIL,
+      to:      process.env.CLINIC_EMAIL.split(',').map(e => e.trim()).filter(Boolean),
       replyTo: email,
       subject: `Programare nouă — ${treatment} (${name})`,
       html:    htmlBody,
