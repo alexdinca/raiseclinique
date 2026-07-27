@@ -50,6 +50,18 @@ function esc(val) {
     .replace(/"/g, '&quot;');
 }
 
+// WhatsApp Content template variable values may not contain newlines, tabs or
+// runs of spaces, and may not be empty — violations fail the send (21656/92007).
+// Runtime ceiling is 256 chars per value, so slice well under it.
+function tplVar(value, fallback = '-') {
+  const s = String(value ?? '')
+    .replace(/[\r\n\t\v\f\u2028\u2029]+/g, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+  if (s === '') return fallback;
+  return s.length > 200 ? s.slice(0, 197) + '...' : s;
+}
+
 function isValidEmail(v) {
   return v.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 }
@@ -147,16 +159,50 @@ module.exports = async function handler(req, res) {
     errors.push('email');
   }
 
+  // WhatsApp notification. Preferred path is an approved Content template,
+  // which is the only thing that works outside WhatsApp's 24h service window.
+  // Falls back to a freeform body when TWILIO_CONTENT_SID isn't configured —
+  // that path only delivers inside the window and otherwise fails with 63016.
+  const contentSid = (process.env.TWILIO_CONTENT_SID || '').trim();
+  const mode = contentSid ? 'template' : 'freeform';
+
   try {
     const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
-    await client.messages.create({
+
+    const payload = {
       from: `whatsapp:${process.env.TWILIO_WHATSAPP_FROM}`,
       to:   `whatsapp:${process.env.CLINIC_WHATSAPP}`,
-      body: whatsappText,
-    });
+    };
+
+    if (contentSid) {
+      // contentSid REPLACES body — sending both fails with 35127.
+      payload.contentSid = contentSid;
+      payload.contentVariables = JSON.stringify({
+        '1': tplVar(name),
+        '2': tplVar(phone),
+        '3': tplVar(treatment),
+        '4': tplVar(date,    'nespecificata'),  // optional field
+        '5': tplVar(message, 'fara mesaj'),     // optional field
+      });
+      // Twilio's docs disagree on whether a Messaging Service is required for
+      // Content sends; passing it alongside `from` satisfies both readings and
+      // the sender needn't be in the service's pool. Optional.
+      if (process.env.TWILIO_MESSAGING_SERVICE_SID) {
+        payload.messagingServiceSid = process.env.TWILIO_MESSAGING_SERVICE_SID.trim();
+      }
+    } else {
+      payload.body = whatsappText;
+    }
+
+    const msg = await client.messages.create(payload);
+    console.log('Twilio ok:', JSON.stringify({ mode, sid: msg.sid, status: msg.status }));
     results.whatsapp = true;
   } catch (err) {
-    console.error('Twilio error:', err.message);
+    // err.code is what actually identifies the failure (63016, 21656, 63028…);
+    // logging only err.message hides it.
+    console.error('Twilio error:', JSON.stringify({
+      mode, message: err.message, code: err.code, status: err.status, moreInfo: err.moreInfo,
+    }));
     errors.push('whatsapp');
   }
 
