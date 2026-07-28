@@ -294,7 +294,7 @@ window.SERVICES_DATA = [
       },
       {
         name: "Hollywood Peel",
-        old: "500 lei", now: "400 lei",
+        old: "500 lei", now: "300 lei",
         tag: "Carbon Peel — curățare profundă și strălucire instantanee",
         desc: `
           <p>Carbon Peel (cunoscut și ca Hollywood Peel sau Carbon Laser Facial) este un tratament dermatologic non-invaziv, ideal pentru curățarea profundă, exfolierea și întinerirea rapidă a tenului. Combină o mască pe bază de cărbune activ cu tehnologia laser Nd:YAG pentru a distruge impuritățile din pori și a stimula colagenul.</p>
@@ -325,7 +325,7 @@ window.SERVICES_DATA = [
       },
       {
         name: "Pachet Hollywood Deluxe",
-        old: "2000 lei", now: "1500 lei",
+        old: "2000 lei", now: "1000 lei",
         tag: "5 ședințe Carbon Peel — pentru un ten radiant",
         desc: `
           <p>Pachetul Hollywood Deluxe include <b>5 ședințe Carbon Peel</b>, pentru un ten radiant!</p>
@@ -365,7 +365,7 @@ window.SERVICES_DATA = [
     items: [
       {
         name: "Îndepărtare cu laser PICO",
-        old: "500 lei", now: "400 lei",
+        old: "500 lei", now: "300 lei",
         tag: "Fragmentarea pigmentului cu laser — fără cicatrici",
         desc: `
           <p>Îndepărtarea tatuajelor cu laser este cea mai sigură și eficientă metodă modernă de eliminare a pigmenților din piele, acționând prin fragmentarea particulelor de tuș fără a distruge țesutul înconjurător. Se folosește atât pentru tatuaje corporale, cât și pentru ștergerea machiajului semipermanent — fără a rămâne cicatrici.</p>
