@@ -445,6 +445,10 @@
     font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:400;color:var(--ink);
     line-height:1.15;margin-bottom:6px;
   }
+  .svc-paren{
+    font-family:"Cormorant Garamond",serif;font-size:21px;font-weight:600;
+    color:var(--gold-2);line-height:1.25;margin-bottom:7px;
+  }
   .svc-tag{
     font-family:"Cormorant Garamond",serif;font-size:17px;font-style:italic;
     color:var(--muted);line-height:1.4;
@@ -522,6 +526,11 @@
     font-family:"Cormorant Garamond",serif;font-weight:400;font-size:36px;line-height:1.1;
     color:var(--ink);margin-bottom:14px;padding-right:40px;
   }
+  .svc-modal .m-paren{
+    font-family:"Cormorant Garamond",serif;font-size:23px;font-weight:600;
+    color:var(--gold-2);line-height:1.25;margin:-8px 0 14px;
+  }
+  .svc-modal .m-paren:empty{display:none}
   .svc-modal-price{
     display:flex;align-items:baseline;gap:14px;
     padding-bottom:24px;margin-bottom:26px;border-bottom:1px solid var(--line);
@@ -951,6 +960,7 @@
     .svc-tab{font-size:10px;letter-spacing:.16em;padding:11px 14px}
     .svc-card{grid-template-columns:1fr;gap:16px;padding:22px 2px}
     .svc-name{font-size:23px}
+    .svc-paren{font-size:19px;margin-bottom:6px}
     .svc-tag{font-size:16px}
     .svc-aside{justify-content:space-between;gap:16px}
     .svc-price{flex-direction:row;align-items:baseline;gap:10px}
@@ -962,6 +972,7 @@
       border:none;
     }
     .svc-modal h3{font-size:30px}
+    .svc-modal .m-paren{font-size:20px;margin:-6px 0 12px}
     .svc-modal-body p,.svc-modal-body li{font-size:16px}
     .svc-modal-foot{justify-content:stretch}
     .svc-modal-foot .btn{width:100%;justify-content:center}
@@ -1074,15 +1085,19 @@
             "@type": "OfferCatalog",
             "name": "Tratamente faciale",
             "itemListElement": [
-              { "@type": "Offer", "priceCurrency": "RON", "price": "300", "itemOffered": { "@type": "Service", "name": "Oxygen Elixir" } },
-              { "@type": "Offer", "priceCurrency": "RON", "price": "450", "itemOffered": { "@type": "Service", "name": "Instant Glow Microneedling" } },
-              { "@type": "Offer", "priceCurrency": "RON", "price": "350", "itemOffered": { "@type": "Service", "name": "Mezoterapie Glow Up" } },
-              { "@type": "Offer", "priceCurrency": "RON", "price": "350", "itemOffered": { "@type": "Service", "name": "Hydro-Glow & Deep Cleanse" } },
-              { "@type": "Offer", "priceCurrency": "RON", "price": "300", "itemOffered": { "@type": "Service", "name": "Pro-Age & Collagen Booster" } },
-              { "@type": "Offer", "priceCurrency": "RON", "price": "300", "itemOffered": { "@type": "Service", "name": "Flash Radiance & Detox" } },
-              { "@type": "Offer", "priceCurrency": "RON", "price": "250", "itemOffered": { "@type": "Service", "name": "Teenage Dream" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "250", "itemOffered": { "@type": "Service", "name": "Oxygen Elixir (oxigenoterapie)" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "400", "itemOffered": { "@type": "Service", "name": "Instant Glow (microneedling)" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "300", "itemOffered": { "@type": "Service", "name": "Glow Up (mezoterapie)" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "250", "itemOffered": { "@type": "Service", "name": "Hydra-Glow (curățare ten gras, extracții)" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "250", "itemOffered": { "@type": "Service", "name": "Pro-Age Collagen (anti-ageing)" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "250", "itemOffered": { "@type": "Service", "name": "Flash Radiance (ten uscat, tern)" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "200", "itemOffered": { "@type": "Service", "name": "Teenage Dream (curățare ten adolescenți)" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "200", "itemOffered": { "@type": "Service", "name": "Cuperosis Ritual (ten cuperozic)" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "400", "itemOffered": { "@type": "Service", "name": "Gold Hollywood Combo (curățare în profunzime + Carbon Peel)" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "500", "itemOffered": { "@type": "Service", "name": "Deluxe Hollywood Combo (microneedling + Carbon Peel)" } },
               { "@type": "Offer", "priceCurrency": "RON", "price": "300", "itemOffered": { "@type": "Service", "name": "Hollywood Peel (Carbon Peel)" } },
-              { "@type": "Offer", "priceCurrency": "RON", "price": "1000", "itemOffered": { "@type": "Service", "name": "Pachet Hollywood Deluxe — 5 ședințe Carbon Peel" } }
+              { "@type": "Offer", "priceCurrency": "RON", "price": "1000", "itemOffered": { "@type": "Service", "name": "Pachet Hollywood Peel — 4 ședințe Carbon Peel" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "200", "itemOffered": { "@type": "Service", "name": "Plasma Pen Beauty (arderea negilor, papiloamelor și alunițelor inestetice)" } }
             ]
           },
           {
@@ -1091,7 +1106,7 @@
             "itemListElement": [
               { "@type": "Offer", "priceCurrency": "RON", "price": "300", "itemOffered": { "@type": "Service", "name": "HIFU gușă" } },
               { "@type": "Offer", "priceCurrency": "RON", "price": "500", "itemOffered": { "@type": "Service", "name": "HIFU full face" } },
-              { "@type": "Offer", "priceCurrency": "RON", "price": "800", "itemOffered": { "@type": "Service", "name": "HIFU full face & gușă" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "600", "itemOffered": { "@type": "Service", "name": "HIFU full face & gușă" } },
               { "@type": "Offer", "priceCurrency": "RON", "price": "500", "itemOffered": { "@type": "Service", "name": "HIFU o zonă corp" } },
               { "@type": "Offer", "priceCurrency": "RON", "price": "3000", "itemOffered": { "@type": "Service", "name": "HIFU full body (6 zone la alegere)" } },
               { "@type": "Offer", "priceCurrency": "RON", "price": "4000", "itemOffered": { "@type": "Service", "name": "HIFU full body (toate cele 8 zone) + full face & gușă CADOU" } }
@@ -1110,7 +1125,8 @@
             "@type": "OfferCatalog",
             "name": "Laminare sprâncene",
             "itemListElement": [
-              { "@type": "Offer", "priceCurrency": "RON", "price": "220", "itemOffered": { "@type": "Service", "name": "Stilizare & laminare sprâncene" } }
+              { "@type": "Offer", "priceCurrency": "RON", "price": "200", "itemOffered": { "@type": "Service", "name": "Stilizare & laminare sprâncene" } },
+              { "@type": "Offer", "priceCurrency": "RON", "price": "50", "itemOffered": { "@type": "Service", "name": "Stilizare sprâncene" } }
             ]
           }
         ]
@@ -1467,6 +1483,7 @@
     <button class="svc-close" id="svcClose" aria-label="Închide">&times;</button>
     <div class="m-eyebrow" id="mCat"></div>
     <h3 id="mTitle"></h3>
+    <div class="m-paren" id="mParen"></div>
     <div class="svc-modal-price" id="mPrice"></div>
     <div class="svc-modal-body" id="mBody"></div>
     <div class="svc-modal-foot">
@@ -1652,7 +1669,14 @@
           const tagEl = document.createElement('p');
           tagEl.className = 'svc-tag';
           tagEl.textContent = it.tag;
-          main.appendChild(nameEl); main.appendChild(tagEl);
+          main.appendChild(nameEl);
+          if (it.paren) {
+            const parenEl = document.createElement('p');
+            parenEl.className = 'svc-paren';
+            parenEl.textContent = '(' + it.paren + ')';
+            main.appendChild(parenEl);
+          }
+          main.appendChild(tagEl);
 
           const aside = document.createElement('div');
           aside.className = 'svc-aside';
@@ -1697,11 +1721,13 @@
     const modal = document.getElementById('svcModal');
     const mCat = document.getElementById('mCat');
     const mTitle = document.getElementById('mTitle');
+    const mParen = document.getElementById('mParen');
     const mPrice = document.getElementById('mPrice');
     const mBody = document.getElementById('mBody');
     function openModal(cat, it){
       mCat.textContent = cat.label;
       mTitle.textContent = it.name;
+      mParen.textContent = it.paren ? '(' + it.paren + ')' : '';
       mPrice.innerHTML = it.old
         ? `<span class="old">${it.old}</span><span class="now">${it.now}</span>`
         : `<span class="now">${it.now}</span>`;

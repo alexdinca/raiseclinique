@@ -71,7 +71,8 @@ window.SERVICES_DATA = [
     items: [
       {
         name: "Oxygen Elixir",
-        old: "400 lei", now: "300 lei",
+        paren: "oxigenoterapie",
+        old: "400 lei", now: "250 lei",
         tag: "Infuzie de oxigen pur și seruri active — luminozitate instantanee",
         desc: `
           <p>Oxigenoterapia facială este un tratament cosmetic non-invaziv care folosește oxigen pur presurizat pentru a introduce substanțe active în straturile profunde ale pielii. Procedura stimulează regenerarea celulară, oferind instantaneu luminozitate, hidratare intensă și un efect vizibil de întinerire.</p>
@@ -108,8 +109,9 @@ window.SERVICES_DATA = [
           </ul>`
       },
       {
-        name: "Instant Glow Microneedling",
-        old: "600 lei", now: "450 lei",
+        name: "Instant Glow",
+        paren: "microneedling",
+        old: "600 lei", now: "400 lei",
         tag: "Inducție de colagen prin micro-înțepături controlate",
         desc: `
           <p>Microneedling-ul este o procedură cosmetică minim invazivă care stimulează producția naturală de colagen și elastină prin micro-înțepături controlate, realizate cu ace minuscule sterilizate. Cunoscută și ca terapie de inducție a colagenului, este folosită pe scară largă pentru regenerarea pielii, estomparea cicatricilor și reducerea semnelor de îmbătrânire.</p>
@@ -136,8 +138,9 @@ window.SERVICES_DATA = [
           </ul>`
       },
       {
-        name: "Mezoterapie Glow Up",
-        old: "450 lei", now: "350 lei",
+        name: "Glow Up",
+        paren: "mezoterapie",
+        old: "450 lei", now: "300 lei",
         tag: "Infuzie de vitamine, acid hialuronic și aminoacizi",
         desc: `
           <p>Mezoterapia este o procedură estetică minim invazivă prin care se introduc în straturile profunde ale pielii substanțe nutritive precum acid hialuronic, vitamine, minerale și aminoacizi, pentru rejuvenare și hidratare. Tratamentul stimulează producția naturală de colagen și elastină, oferind un aspect mai ferm, luminos și vizibil întinerit.</p>
@@ -167,26 +170,30 @@ window.SERVICES_DATA = [
           </ul>`
       },
       {
-        name: "Hydro-Glow & Deep Cleanse",
-        old: "450 lei", now: "350 lei",
+        name: "Hydra-Glow",
+        paren: "curățare ten gras, extracții",
+        old: "450 lei", now: "250 lei",
         tag: "Curățare profundă, extracții și hidratare, cu radiofrecvență",
         desc: `<p>Ritual de curățare profundă, extracții și hidratare, finalizat cu radiofrecvență pentru fermitate și luminozitate.</p>${RF_BLOCK}`
       },
       {
-        name: "Pro-Age & Collagen Booster",
-        old: "400 lei", now: "300 lei",
+        name: "Pro-Age Collagen",
+        paren: "anti-ageing",
+        old: "400 lei", now: "250 lei",
         tag: "Ritual de lifting, hidratare și fermitate, cu radiofrecvență",
         desc: `<p>Ritual de lifting, hidratare și fermitate, susținut de radiofrecvență pentru un ten vizibil mai tânăr.</p>${RF_BLOCK}`
       },
       {
-        name: "Flash Radiance & Detox",
-        old: "400 lei", now: "300 lei",
+        name: "Flash Radiance",
+        paren: "ten uscat, tern",
+        old: "400 lei", now: "250 lei",
         tag: "Hidratare intensă, cu radiofrecvență",
         desc: `<p>Tratament pentru hidratare intensă, cu radiofrecvență — pentru un boost rapid de strălucire și detoxifiere.</p>${RF_BLOCK}`
       },
       {
         name: "Teenage Dream",
-        old: "300 lei", now: "250 lei",
+        paren: "curățare ten adolescenți",
+        old: "300 lei", now: "200 lei",
         tag: "Ritual complet pentru pielea tânără",
         desc: `
           <p>Tratament pentru pielea tânără: diagnosticare video, exfoliere, curățare profundă, extracții, drenaj și detoxifiere (manipul cald), oxigenare și infuzie (ultrasunete), mască, sigilare și calmare (manipul rece).</p>
@@ -207,7 +214,8 @@ window.SERVICES_DATA = [
       },
       {
         name: "Cuperosis Ritual",
-        old: "350 lei", now: "250 lei",
+        paren: "ten cuperozic",
+        old: "350 lei", now: "200 lei",
         tag: "Ritual calmant pentru ten cuperozic — reduce roșeața și inflamația",
         desc: `
           <p>Tratament pentru pielea cuperozică: curățare blândă, hidratare cu oxigen hiperbaric, infuzie de acid hialuronic, masaj soft cu cremă specifică tenului cuperozic, ciocan rece cu mască calmantă și SPF.</p>
@@ -254,7 +262,8 @@ window.SERVICES_DATA = [
       },
       {
         name: "Gold Hollywood Combo",
-        old: "750 lei", now: "550 lei",
+        paren: "curățare în profunzime + Carbon Peel",
+        old: "750 lei", now: "400 lei",
         tag: "Hidrafacial, radiofrecvență și Hollywood Peel — ritualul complet",
         desc: `
           <p>Ritual de curățare profundă, extracții cu spatula cu ultrasunete, hidrafacial, radiofrecvență pentru stimularea colagenului și oxigen hiperbaric pentru fermitate și hidratare — <b>împreună cu Hollywood Peel</b>, pentru închiderea porilor și luminozitate.</p>
@@ -293,6 +302,43 @@ window.SERVICES_DATA = [
           </ul>`
       },
       {
+        name: "Deluxe Hollywood Combo",
+        paren: "microneedling + Carbon Peel",
+        old: "800 lei", now: "500 lei",
+        tag: "Microneedling și Carbon Peel — colagen nou, pori vizibil micșorați",
+        desc: `
+          <p>Combinația perfectă între microneedling, care ajută la producția de colagen, și Carbon Peel, care ajută la diminuarea ridurilor fine și micșorarea porilor.</p>
+          <p>Aparatul, de tip Dermapen sau role Dermaroller, creează sute de micro-perforații fine în epidermă și dermă. Aceste leziuni microscopice declanșează mecanismul natural de vindecare: celulele eliberează factori de creștere care stimulează formarea de noi fibre de colagen și elastină. Canalele create temporar permit substanțelor active (seruri cu acid hialuronic, vitamine sau cocktailuri de mezoterapie) să pătrundă profund în piele.</p>
+          <h5>Principalele beneficii (microneedling)</h5>
+          <ul>
+            <li><b>Atenuarea cicatricilor:</b> extrem de eficient pe cicatrici post-acneice, post-operatorii sau post-traumatice.</li>
+            <li><b>Rejuvenare facială:</b> reduce ridurile fine, liniile de expresie și redă fermitatea.</li>
+            <li><b>Uniformizarea texturii:</b> corectează porii dilatați și textura aspră.</li>
+            <li><b>Diminuarea hiperpigmentării:</b> estompează petele cauzate de soare sau vârstă.</li>
+            <li><b>Reducerea vergeturilor:</b> aplicabil și pe corp.</li>
+          </ul>
+          <h5>Beneficii majore (Carbon Peel)</h5>
+          <ul>
+            <li><b>Curățare profundă:</b> elimină sebumul, punctele negre și bacteriile responsabile de acnee.</li>
+            <li><b>Micșorarea porilor:</b> căldura contractă porii dilatați.</li>
+            <li><b>Exfoliere și luminozitate:</b> piele catifelată și radiantă imediat după ședință.</li>
+            <li><b>Efect anti-aging:</b> stimulează colagenul, reducând liniile fine.</li>
+          </ul>
+          <h5>Contraindicații</h5>
+          <ul>
+            <li><b>Infecții și afecțiuni active ale pielii:</b></li>
+            <li>Herpes activ sau alte infecții bacteriene/fungice în zona feței.</li>
+            <li>Acnee chistică severă sau leziuni inflamatorii mari.</li>
+            <li>Eczeme, dermatite sau răni deschise și arsuri nevindecate.</li>
+            <li>Sarcina și alăptarea.</li>
+            <li>Boli autoimune sau diabet necontrolat.</li>
+            <li>Epilepsie (risc declanșat de lumina laserului) sau afecțiuni cardiace severe.</li>
+            <li>Tendința de a dezvolta cicatrici cheloide sau tulburări de coagulare a sângelui.</li>
+            <li>Tratamentul cu Isotretinoin (Accutane / Roaccutane) în ultimele 6 luni.</li>
+            <li>Retinoizi topici sau acizi puternici folosiți recent pentru exfoliere.</li>
+          </ul>`
+      },
+      {
         name: "Hollywood Peel",
         old: "500 lei", now: "300 lei",
         tag: "Carbon Peel — curățare profundă și strălucire instantanee",
@@ -324,11 +370,11 @@ window.SERVICES_DATA = [
           </ul>`
       },
       {
-        name: "Pachet Hollywood Deluxe",
+        name: "Pachet Hollywood Peel",
         old: "2000 lei", now: "1000 lei",
-        tag: "5 ședințe Carbon Peel — pentru un ten radiant",
+        tag: "4 ședințe Carbon Peel — pentru un ten radiant",
         desc: `
-          <p>Pachetul Hollywood Deluxe include <b>5 ședințe Carbon Peel</b>, pentru un ten radiant!</p>
+          <p>Pachetul Hollywood Peel include <b>4 ședințe Carbon Peel</b>, pentru un ten radiant!</p>
           <p>Carbon Peel (cunoscut și ca Hollywood Peel sau Carbon Laser Facial) este un tratament dermatologic non-invaziv, ideal pentru curățarea profundă, exfolierea și întinerirea rapidă a tenului. Procedura combină o mască pe bază de cărbune activ cu tehnologia laser Nd:YAG pentru a distruge impuritățile din pori și a stimula colagenul.</p>
           <h5>Cum funcționează</h5>
           <p>Procedura se desfășoară rapid, în trei etape principale:</p>
@@ -354,6 +400,33 @@ window.SERVICES_DATA = [
             <li><b>Tratamente cu retinoizi/retinol:</b> nu se efectuează după utilizare recentă (ex. Roaccutane).</li>
             <li><b>Afecțiuni fotosensibilizante:</b> lupus, epilepsie, diabet dezechilibrat sau boli de inimă.</li>
             <li><b>Expunere recentă la soare:</b> nu este indicată pe piele cu arsuri solare recente.</li>
+          </ul>`
+      },
+      {
+        name: "Plasma Pen Beauty",
+        paren: "arderea negilor, papiloamelor și alunițelor inestetice",
+        old: "300 lei", now: "200 lei",
+        tag: "Terapie cu fibroblaste — lifting și îndepărtarea imperfecțiunilor",
+        desc: `
+          <p>Plasma Pen este un dispozitiv cosmetic non-invaziv utilizat pentru lifting, întinerire și fermitatea pielii prin terapia cu fibroblaste. Aparatul folosește energie electrică pentru a ioniza oxigenul și azotul din aer, generând un arc electric de plasmă care creează micro-arsuri superficiale, controlate, la nivelul pielii. Această acțiune contractă instantaneu țesutul și stimulează producția masivă de colagen și elastină pe termen lung.</p>
+          <h5>Beneficii principale</h5>
+          <ul>
+            <li><b>Blefaroplastie nechirurgicală:</b> ridicarea pleoapelor căzute și reducerea pungilor de sub ochi.</li>
+            <li><b>Reducerea ridurilor:</b> eliminarea liniilor fine din jurul ochilor (laba gâștei), a ridurilor de pe frunte și din jurul gurii.</li>
+            <li><b>Îndepărtarea imperfecțiunilor:</b> eliminarea alunițelor benigne, a verucilor (negilor), a petelor pigmentare și a fibroamelor moi (skin tags).</li>
+            <li><b>Corectarea cicatricilor:</b> ameliorarea urmelor lăsate de acnee sau a vergeturilor.</li>
+          </ul>
+          <h5>Contraindicații</h5>
+          <ul>
+            <li><b>Sarcina și alăptarea:</b> perioadă în care corpul este sensibil.</li>
+            <li><b>Cancer activ:</b> sau istoric de cancer de piele.</li>
+            <li><b>Dispozitive electronice:</b> prezența unui stimulator cardiac (pacemaker).</li>
+            <li><b>Tratamente cu anticoagulante:</b> risc mare de sângerare sau vindecare greoaie.</li>
+            <li><b>Boli imunosupresoare:</b> sistem de apărare slab.</li>
+            <li><b>Infecții active:</b> cum ar fi herpesul sau acneea severă în zona tratată.</li>
+            <li><b>Afecțiuni dermatologice:</b> psoriazis, eczemă sau dermatită activă.</li>
+            <li><b>Cicatrici cheloide:</b> tendință de vindecare urâtă a pielii.</li>
+            <li><b>Obiecte metalice:</b> piercing-uri sau metale în zona unde se lucrează.</li>
           </ul>`
       }
     ]
@@ -454,7 +527,7 @@ window.SERVICES_DATA = [
     items: [
       {
         name: "Stilizare & laminare sprâncene",
-        old: "300 lei", now: "220 lei",
+        old: "300 lei", now: "200 lei",
         tag: "Armonizare, definire și fixare a firelor — efect 4–6 săptămâni",
         desc: `
           <p>Stilizarea sprâncenelor este un proces profesional de armonizare, conturare și definire în funcție de fizionomia fiecărei persoane. Spre deosebire de pensatul clasic, care doar curăță firele în exces, stilizarea creează o formă echilibrată, corectează asimetriile și pune în valoare trăsăturile feței.</p>
@@ -479,6 +552,13 @@ window.SERVICES_DATA = [
             <li>Pensat/epilat cu ceară cu mai puțin de 24–48 h înainte.</li>
             <li>Sprâncene extrem de rare sau deteriorate.</li>
           </ul>`
+      },
+      {
+        name: "Stilizare sprâncene",
+        old: "100 lei", now: "50 lei",
+        tag: "Armonizarea formei, lungimii și culorii cu fizionomia feței",
+        desc: `
+          <p>Stilizarea sprâncenelor este procesul personalizat de armonizare a formei, lungimii și culorii sprâncenelor cu fizionomia feței. Spre deosebire de pensatul clasic, stilizarea folosește tehnici multiple pentru a crea simetrie și volum, transformând radical expresia feței.</p>`
       }
     ]
   },
@@ -489,7 +569,7 @@ window.SERVICES_DATA = [
     items: [
       { name: "HIFU gușă", old: "400 lei", now: "300 lei", tag: "Lifting non-chirurgical al zonei submentoniere", desc: HIFU_GENERIC },
       { name: "HIFU full face", old: "600 lei", now: "500 lei", tag: "Lifting facial complet, fără chirurgie", desc: HIFU_GENERIC },
-      { name: "HIFU full face & gușă", old: "1000 lei", now: "800 lei", tag: "Față completă plus zona submentonieră", desc: HIFU_GENERIC },
+      { name: "HIFU full face & gușă", old: "1000 lei", now: "600 lei", tag: "Față completă plus zona submentonieră", desc: HIFU_GENERIC },
       {
         name: "HIFU o zonă corp", old: "600 lei", now: "500 lei",
         tag: "O singură zonă, la alegere",
