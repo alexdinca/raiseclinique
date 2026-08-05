@@ -618,12 +618,39 @@
     text-align:center;max-width:620px;margin:0 auto 46px;
     font-family:"Cormorant Garamond",serif;font-style:italic;font-size:17px;color:var(--muted);
   }
-  .ba-panel{display:none;max-width:900px;margin:0 auto}
+  .ba-panel{display:none;max-width:900px;margin:0 auto;position:relative}
   .ba-panel.active{display:block}
-  .ba-grid{
-    display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+  .ba-track{
+    display:flex;gap:20px;
+    overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;-ms-overflow-style:none;
   }
+  .ba-track::-webkit-scrollbar{display:none}
+  .ba-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);z-index:4;
+    width:46px;height:46px;border-radius:50%;
+    border:1px solid var(--line-strong);background:rgba(251,246,236,.95);
+    color:var(--gold-2);cursor:pointer;padding:0;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 20px rgba(162,128,60,.18);
+    transition:background .2s,color .2s,border-color .2s,opacity .2s;
+  }
+  .ba-arrow:hover{background:var(--gold);color:#fff;border-color:var(--gold)}
+  .ba-arrow.prev{left:-23px}
+  .ba-arrow.next{right:-23px}
+  .ba-arrow[disabled]{opacity:0;pointer-events:none}
+  .ba-dots{
+    display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:26px;
+  }
+  .ba-dots button{
+    width:8px;height:8px;padding:0;border-radius:50%;
+    border:1px solid var(--gold);background:transparent;cursor:pointer;
+    transition:background .25s,transform .25s;
+  }
+  .ba-dots button.active{background:var(--gold);transform:scale(1.3)}
   .ba-item{
+    flex:0 0 calc(50% - 10px);scroll-snap-align:start;
     position:relative;overflow:hidden;
     border:1px solid var(--line);background:var(--cream);
     cursor:zoom-in;
@@ -665,6 +692,28 @@
     display:flex;align-items:center;justify-content:center;transition:background .2s;
   }
   .ba-box .ba-close:hover{background:rgba(251,246,236,.22)}
+  .ba-box .ba-nav{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:52px;height:52px;border-radius:50%;
+    border:1px solid rgba(217,194,138,.5);background:rgba(251,246,236,.12);
+    color:var(--ivory);cursor:pointer;padding:0;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s,opacity .2s;
+  }
+  .ba-box .ba-nav:hover{background:rgba(251,246,236,.26)}
+  .ba-box .ba-nav.prev{left:22px}
+  .ba-box .ba-nav.next{right:22px}
+  .ba-box .ba-nav[disabled]{opacity:.25;pointer-events:none}
+  .ba-counter{
+    position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+    font-family:"Cinzel",serif;font-size:11px;letter-spacing:.3em;
+    color:rgba(251,246,236,.85);pointer-events:none;
+  }
+  .ba-swipe-hint{
+    position:absolute;bottom:52px;left:50%;transform:translateX(-50%);
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-size:14px;
+    color:rgba(251,246,236,.5);pointer-events:none;display:none;
+  }
 
   /* TESTIMONIAL */
   .testimonial{
@@ -1023,10 +1072,18 @@
     .eyebrow{font-size:10px;letter-spacing:.36em}
 
     /* before & after */
-    .ba-grid{grid-template-columns:1fr;gap:18px}
+    .ba-track{gap:0;margin:0 -22px;padding:0}
+    /* un card = exact lățimea ecranului, ca snap-ul să ajungă la ultimul */
+    .ba-item{flex:0 0 100%;border-left:none;border-right:none}
+    .ba-arrow{display:none} /* pe mobil se navighează prin swipe */
     .ba-note{font-size:16px;margin-bottom:34px}
-    .ba-box{padding:14px}
+    .ba-box{padding:10px}
     .ba-box .ba-close{top:12px;right:12px;width:40px;height:40px}
+    .ba-box .ba-nav{width:44px;height:44px}
+    .ba-box .ba-nav.prev{left:8px}
+    .ba-box .ba-nav.next{right:8px}
+    .ba-box img{max-height:82vh}
+    .ba-swipe-hint{display:block}
 
     /* echipa — slider pe mobil */
     .team-track{
@@ -1524,7 +1581,15 @@
 <!-- LIGHTBOX BEFORE & AFTER -->
 <div class="ba-box" id="baBox" aria-hidden="true">
   <button class="ba-close" id="baClose" aria-label="Închide">&times;</button>
+  <button class="ba-nav prev" id="baPrev" aria-label="Fotografia anterioară">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 18l-6-6 6-6"/></svg>
+  </button>
   <img id="baBoxImg" src="" alt="" />
+  <button class="ba-nav next" id="baNext" aria-label="Fotografia următoare">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 6l6 6-6 6"/></svg>
+  </button>
+  <div class="ba-swipe-hint">Glisează pentru următoarea</div>
+  <div class="ba-counter" id="baCounter"></div>
 </div>
 
 <!-- PHILOSOPHY -->
@@ -1952,16 +2017,39 @@
     function load(cat){
       if (cat.started) return;
       cat.started = true;
-      const grid = document.createElement('div');
-      grid.className = 'ba-grid';
+      cat.photos = [];
+
+      const track = document.createElement('div');
+      track.className = 'ba-track';
+      const dots = document.createElement('div');
+      dots.className = 'ba-dots';
+      const mkArrow = (dir, path) => {
+        const b = document.createElement('button');
+        b.className = 'ba-arrow ' + dir;
+        b.type = 'button';
+        b.setAttribute('aria-label', dir === 'prev' ? 'Înapoi' : 'Înainte');
+        b.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="' + path + '"/></svg>';
+        return b;
+      };
+      const prev = mkArrow('prev', 'M15 18l-6-6 6-6');
+      const next = mkArrow('next', 'M9 6l6 6-6 6');
       let found = 0;
 
       (function step(i){
         if (i > MAX) return done();
         probe([BASE + cat.id + '-' + i + '.jpg', BASE + cat.id + '-' + i + '.jpeg'], (src) => {
           if (!src) return done();
-          if (!found) { cat.panel.innerHTML = ''; cat.panel.appendChild(grid); }
+          if (!found) {
+            cat.panel.innerHTML = '';
+            cat.panel.appendChild(track);
+            cat.panel.appendChild(prev);
+            cat.panel.appendChild(next);
+            cat.panel.appendChild(dots);
+          }
+          const idx = found;
           found++;
+          cat.photos.push(src);
+
           const fig = document.createElement('figure');
           fig.className = 'ba-item';
           fig.innerHTML = '<span class="ba-badge"><span class="diamond"></span> Înainte / După</span>';
@@ -1971,13 +2059,73 @@
           img.loading = 'lazy';
           img.decoding = 'async';
           fig.appendChild(img);
-          fig.addEventListener('click', () => openBox(src, img.alt));
-          grid.appendChild(fig);
+          fig.addEventListener('click', () => openBox(cat, idx));
+          track.appendChild(fig);
+
+          const d = document.createElement('button');
+          d.type = 'button';
+          d.setAttribute('aria-label', 'Fotografia ' + found);
+          d.addEventListener('click', () => slide(track, idx, cat.sync));
+          dots.appendChild(d);
+
           step(i + 1);
         });
       })(1);
 
-      function done(){ if (!found) emptyState(cat); }
+      function done(){
+        if (!found) { emptyState(cat); return; }
+        const sync = () => {
+          const per = perView(track);
+          const i = Math.round(track.scrollLeft / step1(track));
+          [...dots.children].forEach((d, j) => d.classList.toggle('active', j === i));
+          prev.disabled = track.scrollLeft <= 2;
+          next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 2;
+          dots.style.display = found > per ? '' : 'none';
+        };
+        track.addEventListener('scroll', sync, { passive: true });
+        window.addEventListener('resize', sync);
+        prev.addEventListener('click', () => slide(track, Math.round(track.scrollLeft / step1(track)) - 1, sync));
+        next.addEventListener('click', () => slide(track, Math.round(track.scrollLeft / step1(track)) + 1, sync));
+        cat.sync = sync;
+        sync();
+      }
+    }
+
+    // Lățimea unui "pas" de derulare (card + gap).
+    // Atenție: un panou inactiv are display:none, deci toate măsurătorile sunt 0 —
+    // fără protecția de mai jos, perView devenea NaN și bulinele se ascundeau greșit.
+    function step1(track){
+      const item = track.querySelector('.ba-item');
+      const w = item ? item.getBoundingClientRect().width : 0;
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      const s = w + gap;
+      return s > 0 ? s : (track.clientWidth || 1);
+    }
+    function perView(track){
+      const n = Math.round((track.clientWidth || 0) / step1(track));
+      return Math.max(1, Number.isFinite(n) ? n : 1);
+    }
+
+    // derulare animată (behavior:'smooth' nu e de încredere cu scroll-snap)
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function slide(track, i, onDone){
+      const fin = () => { if (typeof onDone === 'function') onDone(); };
+      const max = track.scrollWidth - track.clientWidth;
+      const start = track.scrollLeft;
+      const end = Math.max(0, Math.min(i * step1(track), max));
+      if (Math.abs(end - start) < 1) { fin(); return; }
+      if (reduce.matches) { track.scrollLeft = end; fin(); return; }
+      const t0 = performance.now(), dur = 380;
+      let ran = false;
+      requestAnimationFrame(function anim(now){
+        ran = true;
+        const p = Math.min(1, (now - t0) / dur);
+        const e = p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2;
+        track.scrollLeft = start + (end - start) * e;
+        if (p < 1) requestAnimationFrame(anim); else fin();
+      });
+      // plasă de siguranță dacă rAF nu rulează (tab ascuns)
+      setTimeout(() => { if (!ran) { track.scrollLeft = end; fin(); } }, 60);
     }
 
     tabsEl.addEventListener('click', (e) => {
@@ -1986,7 +2134,10 @@
       const idx = t.dataset.idx;
       tabsEl.querySelectorAll('.svc-tab').forEach(x => x.classList.toggle('active', x.dataset.idx === idx));
       panelsEl.querySelectorAll('.ba-panel').forEach(x => x.classList.toggle('active', x.dataset.idx === idx));
-      load(CATS[+idx]);
+      const cat = CATS[+idx];
+      load(cat);
+      // recalculează starea acum că panoul e vizibil (măsurătorile erau 0 cât era ascuns)
+      if (cat.sync) cat.sync();
     });
 
     // încarcă primul tab abia când secțiunea intră în ecran
@@ -2004,11 +2155,31 @@
       kick();
     }
 
-    // lightbox
+    // ===== lightbox cu navigare (swipe pe mobil, săgeți + tastatură pe desktop) =====
     const box = document.getElementById('baBox');
     const boxImg = document.getElementById('baBoxImg');
-    function openBox(src, alt){
-      boxImg.src = src; boxImg.alt = alt;
+    const boxPrev = document.getElementById('baPrev');
+    const boxNext = document.getElementById('baNext');
+    const counter = document.getElementById('baCounter');
+    let curCat = null, curIdx = 0;
+
+    function show(i){
+      if (!curCat) return;
+      const list = curCat.photos;
+      if (i < 0 || i >= list.length) return;
+      curIdx = i;
+      boxImg.src = list[i];
+      boxImg.alt = 'Rezultat înainte și după — ' + curCat.label.toLowerCase() +
+                   ' la Raise Beauty Clinique, București (' + (i + 1) + ' din ' + list.length + ')';
+      counter.textContent = (i + 1) + ' / ' + list.length;
+      boxPrev.disabled = i === 0;
+      boxNext.disabled = i === list.length - 1;
+      // preîncarcă vecinii, ca navigarea să fie instantanee
+      [list[i - 1], list[i + 1]].forEach(s => { if (s) { const p = new Image(); p.src = s; } });
+    }
+    function openBox(cat, i){
+      curCat = cat;
+      show(i);
       box.classList.add('open');
       box.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -2018,9 +2189,35 @@
       box.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
     }
+    const isOpen = () => box.classList.contains('open');
+
     document.getElementById('baClose').addEventListener('click', closeBox);
+    boxPrev.addEventListener('click', (e) => { e.stopPropagation(); show(curIdx - 1); });
+    boxNext.addEventListener('click', (e) => { e.stopPropagation(); show(curIdx + 1); });
     box.addEventListener('click', (e) => { if (e.target === box) closeBox(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeBox(); });
+    document.addEventListener('keydown', (e) => {
+      if (!isOpen()) return;
+      if (e.key === 'Escape') closeBox();
+      else if (e.key === 'ArrowLeft') show(curIdx - 1);
+      else if (e.key === 'ArrowRight') show(curIdx + 1);
+    });
+
+    // swipe pe mobil — motivul principal al acestei secțiuni
+    let sx = 0, sy = 0, tracking = false;
+    box.addEventListener('touchstart', (e) => {
+      if (e.touches.length !== 1) { tracking = false; return; }
+      tracking = true;
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY;
+    }, { passive: true });
+    box.addEventListener('touchend', (e) => {
+      if (!tracking) return;
+      tracking = false;
+      const t = e.changedTouches[0];
+      const dx = t.clientX - sx, dy = t.clientY - sy;
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+        show(curIdx + (dx < 0 ? 1 : -1));
+      }
+    }, { passive: true });
   })();
 </script>
 
