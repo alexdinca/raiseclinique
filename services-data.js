@@ -171,24 +171,24 @@ window.SERVICES_DATA = [
       },
       {
         name: "Hydra-Glow",
-        paren: "curățare ten gras, extracții",
+        paren: "curățare, extracții, toate tipurile de ten",
         old: "450 lei", now: "250 lei",
-        tag: "Curățare profundă, extracții și hidratare, cu radiofrecvență",
-        desc: `<p>Ritual de curățare profundă, extracții și hidratare, finalizat cu radiofrecvență pentru fermitate și luminozitate.</p>${RF_BLOCK}`
+        tag: "Curățare profundă, extracții și hidratare, cu hydrafacial",
+        desc: `<p>Ritual de curățare profundă, extracții și hidratare, finalizat cu hydrafacial pentru fermitate și luminozitate.</p>${RF_BLOCK}`
       },
       {
         name: "Pro-Age Collagen",
         paren: "anti-ageing",
         old: "400 lei", now: "250 lei",
-        tag: "Ritual de lifting, hidratare și fermitate, cu radiofrecvență",
-        desc: `<p>Ritual de lifting, hidratare și fermitate, susținut de radiofrecvență pentru un ten vizibil mai tânăr.</p>${RF_BLOCK}`
+        tag: "Ritual de lifting, hidratare și fermitate, cu hydrafacial",
+        desc: `<p>Ritual de lifting, hidratare și fermitate, susținut de hydrafacial pentru un ten vizibil mai tânăr.</p>${RF_BLOCK}`
       },
       {
         name: "Flash Radiance",
         paren: "ten uscat, tern",
         old: "400 lei", now: "250 lei",
-        tag: "Hidratare intensă, cu radiofrecvență",
-        desc: `<p>Tratament pentru hidratare intensă, cu radiofrecvență — pentru un boost rapid de strălucire și detoxifiere.</p>${RF_BLOCK}`
+        tag: "Hidratare intensă, cu hydrafacial",
+        desc: `<p>Tratament pentru hidratare intensă, cu hydrafacial — pentru un boost rapid de strălucire și detoxifiere.</p>${RF_BLOCK}`
       },
       {
         name: "Teenage Dream",
@@ -264,9 +264,9 @@ window.SERVICES_DATA = [
         name: "Gold Hollywood Combo",
         paren: "curățare în profunzime + Carbon Peel",
         old: "750 lei", now: "400 lei",
-        tag: "Hidrafacial, radiofrecvență și Hollywood Peel — ritualul complet",
+        tag: "Hydrafacial, oxigen hiperbaric și Hollywood Peel — ritualul complet",
         desc: `
-          <p>Ritual de curățare profundă, extracții cu spatula cu ultrasunete, hidrafacial, radiofrecvență pentru stimularea colagenului și oxigen hiperbaric pentru fermitate și hidratare — <b>împreună cu Hollywood Peel</b>, pentru închiderea porilor și luminozitate.</p>
+          <p>Ritual de curățare profundă, extracții cu spatula cu ultrasunete, hydrafacial pentru stimularea colagenului și oxigen hiperbaric pentru fermitate și hidratare — <b>împreună cu Hollywood Peel</b>, pentru închiderea porilor și luminozitate.</p>
           <h5>Radiofrecvență facială</h5>
           <p>Tratament estetic non-invaziv care folosește unde electromagnetice pentru a încălzi straturile profunde ale pielii, stimulând producția de colagen și elastină pentru un efect de lifting și fermitate — fără ace și fără perioadă de recuperare.</p>
           <h5>Cum funcționează?</h5>
