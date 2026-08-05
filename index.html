@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#FBF6EC" />
 <meta name="description" content="Salon de înfrumusețare în București, lângă metrou Lujerului (Sector 6). Tratamente faciale, HIFU, microneedling, Carbon Peel și laminare sprâncene. Zonă de joacă supravegheată pentru copii." />
-<meta name="keywords" content="salon înfrumusețare București, tratamente faciale București, HIFU București, microneedling, Carbon Peel, Hollywood Peel, mezoterapie, laminare sprâncene, îndepărtare tatuaje laser, salon cosmetică Sector 6, salon cu loc de joacă pentru copii" />
+<meta name="keywords" content="salon înfrumusețare București, tratamente faciale București, hydrafacial București, hydrafacial, HIFU București, microneedling, Carbon Peel, Hollywood Peel, mezoterapie, plasma pen, laminare sprâncene, îndepărtare tatuaje laser, salon cosmetică Sector 6, salon cu loc de joacă pentru copii" />
 <meta name="author" content="Raise Beauty Clinique" />
 <link rel="canonical" href="https://www.raiseclinique.ro/" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
@@ -116,11 +116,12 @@
     box-shadow:0 1px 0 var(--line);
     padding:12px 56px;
   }
-  .nav-links{display:flex;gap:34px;list-style:none}
+  .nav-links{display:flex;gap:16px;list-style:none}
   .nav-links a{
     text-decoration:none;color:var(--ink-soft);
-    font-size:11px;letter-spacing:.32em;text-transform:uppercase;font-weight:500;
+    font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;
     font-family:"Cinzel",serif;
+    white-space:nowrap;
     transition:color .2s;
   }
   .nav-links a:hover{color:var(--gold-2)}
@@ -254,6 +255,52 @@
     font-family:"Cormorant Garamond",serif;font-size:19px;font-style:italic;
     color:var(--ink-soft);max-width:620px;line-height:1.6;
   }
+
+  /* ECHIPA */
+  .team{
+    background:
+      linear-gradient(rgba(242,231,207,.9),rgba(242,231,207,.94)),
+      url('assets/background.jpeg') center/cover;
+  }
+  .team-track{
+    display:grid;grid-template-columns:1fr 1fr;gap:34px;
+    max-width:1240px;margin:0 auto;
+  }
+  .team-card{
+    background:var(--ivory);border:1px solid var(--line);
+    display:flex;flex-direction:column;
+    box-shadow:0 14px 44px rgba(162,128,60,.10);
+  }
+  .team-photo{
+    position:relative;aspect-ratio:1;overflow:hidden;
+    background:linear-gradient(135deg,#EFE3C8,#E5D3A8);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .team-photo img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;
+  }
+  .team-photo .mono{
+    font-family:"Cinzel",serif;font-size:72px;letter-spacing:.08em;
+    color:var(--gold);opacity:.5;
+  }
+  .team-photo.no-img img{display:none}
+  .team-body{padding:34px 36px 38px;display:flex;flex-direction:column;flex:1}
+  .team-name{
+    font-family:"Cormorant Garamond",serif;font-size:36px;font-weight:400;
+    color:var(--ink);line-height:1.05;margin-bottom:10px;
+  }
+  .team-role{
+    font-family:"Cinzel",serif;font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--gold-2);line-height:1.6;
+    padding-bottom:20px;margin-bottom:22px;border-bottom:1px solid var(--line);
+  }
+  .team-body p{
+    font-family:"Cormorant Garamond",serif;font-size:18px;line-height:1.65;
+    color:var(--ink-soft);margin-bottom:15px;
+  }
+  .team-body p:last-child{margin-bottom:0}
+  .team-body p.lead-in{font-style:italic;color:var(--ink)}
+  .team-dots{display:none}
 
   /* ABOUT */
   .about{background:var(--ivory)}
@@ -565,6 +612,60 @@
     display:flex;justify-content:flex-end;
   }
 
+  /* BEFORE & AFTER */
+  .ba{background:var(--ivory)}
+  .ba-note{
+    text-align:center;max-width:620px;margin:0 auto 46px;
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-size:17px;color:var(--muted);
+  }
+  .ba-panel{display:none;max-width:900px;margin:0 auto}
+  .ba-panel.active{display:block}
+  .ba-grid{
+    display:grid;grid-template-columns:repeat(2,1fr);gap:24px;
+  }
+  .ba-item{
+    position:relative;overflow:hidden;
+    border:1px solid var(--line);background:var(--cream);
+    cursor:zoom-in;
+    transition:border-color .25s, box-shadow .25s;
+  }
+  .ba-item:hover{border-color:var(--gold);box-shadow:0 14px 40px rgba(162,128,60,.16)}
+  .ba-item img{width:100%;height:auto;display:block}
+  .ba-item .ba-badge{
+    position:absolute;left:0;top:0;
+    display:flex;align-items:center;gap:7px;
+    padding:8px 14px;background:rgba(251,246,236,.92);
+    border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+    font-family:"Cinzel",serif;font-size:9px;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold-2);pointer-events:none;
+  }
+  .ba-loading{
+    text-align:center;padding:50px 20px;
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-size:20px;color:var(--muted);
+  }
+
+  /* lightbox */
+  .ba-box{
+    position:fixed;inset:0;z-index:90;
+    display:flex;align-items:center;justify-content:center;padding:28px;
+    background:rgba(42,35,26,.82);backdrop-filter:blur(6px);
+    opacity:0;visibility:hidden;transition:opacity .3s ease,visibility 0s linear .3s;
+  }
+  .ba-box.open{opacity:1;visibility:visible;transition:opacity .3s ease}
+  .ba-box img{
+    max-width:100%;max-height:100%;width:auto;height:auto;
+    object-fit:contain;border:1px solid rgba(217,194,138,.35);
+    box-shadow:0 30px 90px rgba(0,0,0,.45);
+  }
+  .ba-box .ba-close{
+    position:absolute;top:20px;right:20px;
+    width:44px;height:44px;border-radius:50%;
+    border:1px solid rgba(217,194,138,.5);background:rgba(251,246,236,.1);
+    color:var(--ivory);cursor:pointer;font-size:22px;line-height:1;
+    display:flex;align-items:center;justify-content:center;transition:background .2s;
+  }
+  .ba-box .ba-close:hover{background:rgba(251,246,236,.22)}
+
   /* TESTIMONIAL */
   .testimonial{
     background:
@@ -849,7 +950,7 @@
   }
 
   /* TABLET ≤1100px */
-  @media (max-width:1100px){
+  @media (max-width:1300px){
     .hero{grid-template-columns:1fr}
     .hero-right{min-height:60vh}
     .hero-left{padding:120px 50px 60px}
@@ -920,6 +1021,39 @@
     .section-head h2{font-size:32px !important;line-height:1.1}
     .section-head p{font-size:16px}
     .eyebrow{font-size:10px;letter-spacing:.36em}
+
+    /* before & after */
+    .ba-grid{grid-template-columns:1fr;gap:18px}
+    .ba-note{font-size:16px;margin-bottom:34px}
+    .ba-box{padding:14px}
+    .ba-box .ba-close{top:12px;right:12px;width:40px;height:40px}
+
+    /* echipa — slider pe mobil */
+    .team-track{
+      display:flex;grid-template-columns:none;gap:0;
+      overflow-x:auto;overflow-y:hidden;
+      scroll-snap-type:x mandatory;
+      scrollbar-width:none;-ms-overflow-style:none;
+      margin:0 -22px;padding:0;
+    }
+    .team-track::-webkit-scrollbar{display:none}
+    /* lățime exactă cât viewportul — altfel ultimul card nu poate ajunge la punctul de snap */
+    .team-card{
+      flex:0 0 100%;scroll-snap-align:center;
+      border-left:none;border-right:none;box-shadow:none;
+    }
+    .team-body{padding:26px 24px 30px}
+    .team-name{font-size:30px}
+    .team-body p{font-size:17px}
+    .team-dots{
+      display:flex;justify-content:center;gap:10px;margin-top:26px;
+    }
+    .team-dots button{
+      width:9px;height:9px;padding:0;border-radius:50%;
+      border:1px solid var(--gold);background:transparent;cursor:pointer;
+      transition:background .25s,transform .25s;
+    }
+    .team-dots button.active{background:var(--gold);transform:scale(1.25)}
 
     /* about */
     .about-grid{gap:36px}
@@ -1072,6 +1206,20 @@
         "https://www.instagram.com/raise.clinique/",
         "https://www.facebook.com/profile.php?id=61591283108829"
       ],
+      "employee": [
+        {
+          "@type": "Person",
+          "name": "Alina",
+          "jobTitle": "Cosmetician & tehnician micropigmentare · Fondator",
+          "description": "Cosmetician și tehnician în micropigmentare, fondator Raise Beauty Clinique, cu 6 ani de experiență în domeniul frumuseții."
+        },
+        {
+          "@type": "Person",
+          "name": "Vera",
+          "jobTitle": "Cosmetician",
+          "description": "Cosmetician cu 14 ani de experiență în domeniul esteticii și al îngrijirii pielii."
+        }
+      ],
       "amenityFeature": {
         "@type": "LocationFeatureSpecification",
         "name": "Zonă de joacă supravegheată pentru copii",
@@ -1196,8 +1344,9 @@
 <nav class="top" id="nav" data-screen-label="nav">
   <ul class="nav-links">
     <li><a href="#about">Despre</a></li>
+    <li><a href="#team">Echipa</a></li>
     <li><a href="#services">Servicii</a></li>
-    <li><a href="#promo">Promoții</a></li>
+    <li><a href="#rezultate">Rezultate</a></li>
     <li><a href="#faq">Întrebări</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -1217,10 +1366,12 @@
 <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <ul>
     <li><a href="#about" data-mm><span>Despre</span><span class="num">01</span></a></li>
-    <li><a href="#services" data-mm><span>Servicii</span><span class="num">02</span></a></li>
-    <li><a href="#promo" data-mm><span>Promoții</span><span class="num">03</span></a></li>
-    <li><a href="#faq" data-mm><span>Întrebări</span><span class="num">04</span></a></li>
-    <li><a href="#contact" data-mm><span>Contact</span><span class="num">05</span></a></li>
+    <li><a href="#team" data-mm><span>Echipa</span><span class="num">02</span></a></li>
+    <li><a href="#services" data-mm><span>Servicii</span><span class="num">03</span></a></li>
+    <li><a href="#rezultate" data-mm><span>Rezultate</span><span class="num">04</span></a></li>
+    <li><a href="#promo" data-mm><span>Promoții</span><span class="num">05</span></a></li>
+    <li><a href="#faq" data-mm><span>Întrebări</span><span class="num">06</span></a></li>
+    <li><a href="#contact" data-mm><span>Contact</span><span class="num">07</span></a></li>
   </ul>
   <div class="foot">
     <a href="#contact" data-mm class="btn solid lg">Programare</a>
@@ -1274,6 +1425,46 @@
   </div>
 </header>
 
+<!-- ECHIPA -->
+<section class="team reveal" id="team" data-screen-label="echipa">
+  <div class="section-head">
+    <span class="ornament short"><span class="diamond"></span></span>
+    <div class="eyebrow">Echipa noastră</div>
+    <h2>Mâinile în care <em>ai încredere</em>.</h2>
+    <p>Două specialiste, aceeași grijă pentru fiecare ten care ne trece pragul.</p>
+  </div>
+  <div class="team-track" id="teamTrack">
+    <article class="team-card">
+      <div class="team-photo" data-mono="A">
+        <span class="mono">A</span>
+        <img src="assets/team/alina.jpg" alt="Alina — cosmetician și tehnician în micropigmentare, fondator Raise Beauty Clinique" loading="lazy" decoding="async" />
+      </div>
+      <div class="team-body">
+        <h3 class="team-name">Alina</h3>
+        <div class="team-role">Cosmetician &amp; tehnician micropigmentare · Fondator</div>
+        <p class="lead-in">Bună! Sunt Alina, cosmetician și tehnician în micropigmentare, fondator Raise Beauty Clinique, cu 6 ani de experiență în domeniul frumuseții!</p>
+        <p>Pasiunea mea este să ajut fiecare persoană să își evidențieze frumusețea naturală prin tratamente realizate cu profesionalism, grijă și atenție la detalii. Cred că fiecare client este unic, motiv pentru care personalizez fiecare procedură în funcție de nevoile, trăsăturile și obiectivele sale.</p>
+        <p>În cadrul Raise Beauty Clinique, îmi doresc să creez o experiență plăcută și relaxantă pentru fiecare client, într-un mediu în care profesionalismul, igiena și încrederea sunt pe primul loc.</p>
+      </div>
+    </article>
+    <article class="team-card">
+      <div class="team-photo" data-mono="V">
+        <span class="mono">V</span>
+        <img src="assets/team/vera.jpg" alt="Vera — cosmetician cu 14 ani de experiență în estetică și îngrijirea pielii" loading="lazy" decoding="async" />
+      </div>
+      <div class="team-body">
+        <h3 class="team-name">Vera</h3>
+        <div class="team-role">Cosmetician · 14 ani experiență</div>
+        <p class="lead-in">Bună! Sunt Vera, cosmetician cu 14 ani de experiență în domeniul esteticii și al îngrijirii pielii!</p>
+        <p>Pasiunea mea este să ajut fiecare client să își pună în valoare frumusețea naturală prin tratamente profesionale, adaptate nevoilor și obiectivelor fiecăruia. Cred că o piele sănătoasă și îngrijită contribuie la încrederea în sine și la starea de bine.</p>
+        <p>În cei 14 ani de experiență, am acumulat cunoștințe și mi-am perfecționat constant tehnicile de lucru, punând întotdeauna accent pe profesionalism, atenție la detalii și rezultate de calitate.</p>
+        <p>În cadrul Raise Beauty Clinique, îmi doresc să ofer fiecărui client o experiență plăcută și relaxantă, bazată pe încredere, respect și grijă pentru sănătatea pielii.</p>
+      </div>
+    </article>
+  </div>
+  <div class="team-dots" id="teamDots" aria-hidden="true"></div>
+</section>
+
 <!-- ABOUT -->
 <section class="about reveal" id="about" data-screen-label="about">
   <div class="about-grid">
@@ -1316,6 +1507,25 @@
   <div class="svc-tabs" id="svcTabs"></div>
   <div class="svc-panels" id="svcPanels"></div>
 </section>
+
+<!-- BEFORE & AFTER -->
+<section class="ba reveal" id="rezultate" data-screen-label="rezultate">
+  <div class="section-head">
+    <span class="ornament short"><span class="diamond"></span></span>
+    <div class="eyebrow">Înainte &amp; După</div>
+    <h2>Rezultate <em>reale</em>, pe clienți reali.</h2>
+    <p>Fotografii făcute în clinică, fără filtre și fără retuș.</p>
+  </div>
+  <div class="svc-tabs" id="baTabs"></div>
+  <p class="ba-note">Apasă pe imagine pentru a o vedea mărită.</p>
+  <div id="baPanels"></div>
+</section>
+
+<!-- LIGHTBOX BEFORE & AFTER -->
+<div class="ba-box" id="baBox" aria-hidden="true">
+  <button class="ba-close" id="baClose" aria-label="Închide">&times;</button>
+  <img id="baBoxImg" src="" alt="" />
+</div>
 
 <!-- PHILOSOPHY -->
 <section class="philosophy reveal" data-screen-label="philosophy">
@@ -1510,7 +1720,9 @@
     <div class="foot-col">
       <h5>Navigație</h5>
       <a href="#about">Despre</a>
+      <a href="#team">Echipa</a>
       <a href="#services">Servicii</a>
+      <a href="#rezultate">Rezultate</a>
       <a href="#promo">Promoții</a>
       <a href="#faq">Întrebări</a>
       <a href="#contact">Programare</a>
@@ -1561,7 +1773,7 @@
     a.addEventListener('click', ()=> setTimeout(closeMenu, 80));
   });
   // close on resize past mobile breakpoint
-  window.addEventListener('resize', ()=>{ if(window.innerWidth>1100) closeMenu(); });
+  window.addEventListener('resize', ()=>{ if(window.innerWidth>1300) closeMenu(); });
 
   // reveal on scroll
   const io = new IntersectionObserver((entries)=>{
@@ -1620,6 +1832,196 @@
       alert('A apărut o eroare. Te rugăm să ne contactezi telefonic.');
     }
   });
+</script>
+
+<script>
+  // ===== Echipa — slider pe mobil (dots) + fallback foto =====
+  (function(){
+    const track = document.getElementById('teamTrack');
+    const dotsWrap = document.getElementById('teamDots');
+    if (!track || !dotsWrap) return;
+
+    // Dacă o fotografie lipsește sau nu se încarcă, rămâne monograma aurie.
+    track.querySelectorAll('.team-photo img').forEach(img => {
+      const mark = () => img.closest('.team-photo').classList.add('no-img');
+      img.addEventListener('error', mark);
+      if (img.complete && img.naturalWidth === 0) mark();
+    });
+
+    const cards = [...track.querySelectorAll('.team-card')];
+    if (cards.length < 2) return;
+    const idxNow = () => Math.round(track.scrollLeft / (track.clientWidth || 1));
+
+    // Animație proprie: `behavior:'smooth'` nu este de încredere într-un
+    // container cu scroll-snap mandatory (nu se animează în unele browsere).
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function slideTo(i){
+      const start = track.scrollLeft;
+      const end = i * track.clientWidth;
+      if (Math.abs(end - start) < 1) return;
+      if (reduce.matches) { track.scrollLeft = end; sync(); return; }
+      const t0 = performance.now(), dur = 380;
+      let ran = false;
+      requestAnimationFrame(function step(now){
+        ran = true;
+        const p = Math.min(1, (now - t0) / dur);
+        const e = p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2;
+        track.scrollLeft = start + (end - start) * e;
+        if (p < 1) requestAnimationFrame(step); else sync();
+      });
+      // dacă rAF nu rulează (tab ascuns / fără compositing), sărim direct
+      setTimeout(() => { if (!ran) { track.scrollLeft = end; sync(); } }, 60);
+    }
+
+    cards.forEach((card, i) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Membrul ' + (i + 1));
+      b.addEventListener('click', () => slideTo(i));
+      dotsWrap.appendChild(b);
+    });
+    const dots = [...dotsWrap.querySelectorAll('button')];
+    const sync = () => {
+      const i = idxNow();
+      dots.forEach((d, j) => d.classList.toggle('active', j === i));
+    };
+    track.addEventListener('scroll', sync, { passive: true });
+    window.addEventListener('resize', sync);
+    sync();
+  })();
+</script>
+
+<script>
+  // ===== Before & After — taburi + descoperire automată a fotografiilor =====
+  // Fișiere: assets/before-after/<categorie>-1.jpg, -2.jpg, … (litere mici!)
+  // Se încarcă secvențial până la primul index lipsă, doar pentru tabul activ.
+  (function(){
+    const tabsEl = document.getElementById('baTabs');
+    const panelsEl = document.getElementById('baPanels');
+    if (!tabsEl || !panelsEl) return;
+
+    const BASE = 'assets/before-after/';
+    const MAX = 24; // plasă de siguranță
+    const CATS = [
+      { id:'faciale',   label:'Tratamente faciale'  },
+      { id:'papiloame', label:'Ardere papiloame'    },
+      { id:'tatuaje',   label:'Îndepărtare tatuaje' },
+      { id:'hifu',      label:'HIFU'                },
+      { id:'sprancene', label:'Laminare sprâncene'  }
+    ];
+
+    // Verifică existența fișierului cu HEAD (nu descarcă imaginea) — încearcă .jpg apoi .jpeg.
+    // Descărcarea efectivă rămâne în seama lui loading="lazy" de pe <img>.
+    function probe(paths, cb){
+      let k = 0;
+      (function attempt(){
+        if (k >= paths.length) { cb(null); return; }
+        const url = paths[k];
+        fetch(url, { method: 'HEAD' })
+          .then(r => {
+            const ct = r.headers.get('content-type') || '';
+            if (r.ok && ct.indexOf('image') === 0) cb(url);
+            else { k++; attempt(); }
+          })
+          .catch(() => { k++; attempt(); });
+      })();
+    }
+
+    CATS.forEach((cat, ci) => {
+      const tab = document.createElement('button');
+      tab.className = 'svc-tab' + (ci === 0 ? ' active' : '');
+      tab.textContent = cat.label;
+      tab.dataset.idx = ci;
+      tabsEl.appendChild(tab);
+
+      const panel = document.createElement('div');
+      panel.className = 'ba-panel' + (ci === 0 ? ' active' : '');
+      panel.dataset.idx = ci;
+      panel.innerHTML = '<div class="ba-loading">Se încarcă…</div>';
+      panelsEl.appendChild(panel);
+      cat.panel = panel;
+    });
+
+    function emptyState(cat){
+      cat.panel.innerHTML = `<div class="svc-empty">
+        <div class="soon-mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <p>Fotografii disponibile în curând.</p>
+      </div>`;
+    }
+
+    function load(cat){
+      if (cat.started) return;
+      cat.started = true;
+      const grid = document.createElement('div');
+      grid.className = 'ba-grid';
+      let found = 0;
+
+      (function step(i){
+        if (i > MAX) return done();
+        probe([BASE + cat.id + '-' + i + '.jpg', BASE + cat.id + '-' + i + '.jpeg'], (src) => {
+          if (!src) return done();
+          if (!found) { cat.panel.innerHTML = ''; cat.panel.appendChild(grid); }
+          found++;
+          const fig = document.createElement('figure');
+          fig.className = 'ba-item';
+          fig.innerHTML = '<span class="ba-badge"><span class="diamond"></span> Înainte / După</span>';
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = 'Rezultat înainte și după — ' + cat.label.toLowerCase() + ' la Raise Beauty Clinique, București';
+          img.loading = 'lazy';
+          img.decoding = 'async';
+          fig.appendChild(img);
+          fig.addEventListener('click', () => openBox(src, img.alt));
+          grid.appendChild(fig);
+          step(i + 1);
+        });
+      })(1);
+
+      function done(){ if (!found) emptyState(cat); }
+    }
+
+    tabsEl.addEventListener('click', (e) => {
+      const t = e.target.closest('.svc-tab');
+      if (!t) return;
+      const idx = t.dataset.idx;
+      tabsEl.querySelectorAll('.svc-tab').forEach(x => x.classList.toggle('active', x.dataset.idx === idx));
+      panelsEl.querySelectorAll('.ba-panel').forEach(x => x.classList.toggle('active', x.dataset.idx === idx));
+      load(CATS[+idx]);
+    });
+
+    // încarcă primul tab abia când secțiunea intră în ecran
+    const section = document.getElementById('rezultate');
+    let kicked = false;
+    const kick = () => { if (kicked) return; kicked = true; load(CATS[0]); };
+    if ('IntersectionObserver' in window && section) {
+      const io = new IntersectionObserver((ents) => {
+        ents.forEach((en) => { if (en.isIntersecting) { io.disconnect(); kick(); } });
+      }, { rootMargin: '200px' });
+      io.observe(section);
+      // plasă de siguranță: dacă observerul nu se declanșează, încărcăm oricum
+      setTimeout(kick, 3000);
+    } else {
+      kick();
+    }
+
+    // lightbox
+    const box = document.getElementById('baBox');
+    const boxImg = document.getElementById('baBoxImg');
+    function openBox(src, alt){
+      boxImg.src = src; boxImg.alt = alt;
+      box.classList.add('open');
+      box.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeBox(){
+      box.classList.remove('open');
+      box.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    document.getElementById('baClose').addEventListener('click', closeBox);
+    box.addEventListener('click', (e) => { if (e.target === box) closeBox(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeBox(); });
+  })();
 </script>
 
 <script src="services-data.js"></script>
