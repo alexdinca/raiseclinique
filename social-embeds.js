@@ -31,6 +31,8 @@ window.SOCIAL_EMBEDS = [
   { type: "instagram", url: "https://www.instagram.com/reel/DbN1ltYqkqL/" },
   { type: "instagram", url: "https://www.instagram.com/reel/DbPtOSnMYuO/" },
   { type: "instagram", url: "https://www.instagram.com/reel/DbYimQtgEwx/" },
+  { type: "instagram", url: "https://www.instagram.com/reel/Dbr_cRJsG1x/" },
+  { type: "instagram", url: "https://www.instagram.com/reel/Dbr_mwcs1QM/" },
 
   //{ type: "facebook",  url: "https://www.facebook.com/nume.utilizator/posts/123456789", height: 640 },
 ];
