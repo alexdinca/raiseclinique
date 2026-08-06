@@ -778,6 +778,41 @@
   .faq-a a{color:var(--gold-2);text-decoration:none;border-bottom:1px solid var(--gold-soft)}
   .faq-a a:hover{color:var(--gold)}
 
+  /* SOCIAL / COMUNITATE */
+  .social{
+    background:
+      linear-gradient(rgba(242,231,207,.9),rgba(242,231,207,.94)),
+      url('assets/background.jpeg') center/cover;
+  }
+  .social-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(326px,1fr));
+    gap:26px;align-items:start;
+    max-width:1180px;margin:0 auto;
+  }
+  /* position:relative — embed-urile Meta rămân position:absolute cât timp
+     postarea nu s-a încărcat (sau a fost ștearsă); fără asta ar ieși din grilă */
+  .social-item{min-width:0;display:flex;justify-content:center;position:relative}
+  /* embed-urile Meta au lățimi proprii — le forțăm să fie responsive */
+  .social-item iframe,
+  .social-item .instagram-media{
+    min-width:0 !important;
+    width:100% !important;
+    max-width:100% !important;
+    margin:0 !important;
+  }
+  .social-item iframe{border:none;overflow:hidden;display:block}
+  .social-loading{
+    text-align:center;padding:50px 20px;
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-size:20px;color:var(--muted);
+  }
+  .social-cta{
+    text-align:center;margin-top:52px;
+    display:flex;flex-direction:column;align-items:center;gap:16px;
+  }
+  .social-cta p{
+    font-family:"Cormorant Garamond",serif;font-style:italic;font-size:18px;color:var(--ink-soft);
+  }
+
   /* BOOKING */
   .booking{background:var(--ivory);padding:160px 100px}
   .booking-wrap{
@@ -1182,6 +1217,12 @@
     .faq-q{font-size:21px;padding:22px 4px;gap:18px}
     .faq-a{font-size:17px;padding:0 4px 24px}
 
+    /* social */
+    .social{padding:72px 14px !important} /* mai îngust: embed-urile IG au lățime minimă mare */
+    .social-grid{grid-template-columns:1fr;gap:20px}
+    .social-cta{margin-top:38px}
+    .social-cta p{font-size:16px}
+
     /* booking */
     .booking{padding:72px 22px !important}
     .booking-wrap{gap:36px}
@@ -1427,8 +1468,9 @@
     <li><a href="#services" data-mm><span>Servicii</span><span class="num">03</span></a></li>
     <li><a href="#rezultate" data-mm><span>Rezultate</span><span class="num">04</span></a></li>
     <li><a href="#promo" data-mm><span>Promoții</span><span class="num">05</span></a></li>
-    <li><a href="#faq" data-mm><span>Întrebări</span><span class="num">06</span></a></li>
-    <li><a href="#contact" data-mm><span>Contact</span><span class="num">07</span></a></li>
+    <li><a href="#comunitate" data-mm><span>Comunitate</span><span class="num">06</span></a></li>
+    <li><a href="#faq" data-mm><span>Întrebări</span><span class="num">07</span></a></li>
+    <li><a href="#contact" data-mm><span>Contact</span><span class="num">08</span></a></li>
   </ul>
   <div class="foot">
     <a href="#contact" data-mm class="btn solid lg">Programare</a>
@@ -1638,6 +1680,25 @@
   </div>
 </section>
 
+<!-- SOCIAL / COMUNITATE -->
+<section class="social reveal" id="comunitate" data-screen-label="comunitate">
+  <div class="section-head">
+    <span class="ornament short"><span class="diamond"></span></span>
+    <div class="eyebrow">Din comunitate</div>
+    <h2>Momentele voastre, <em>împărtășite</em> cu noi.</h2>
+    <p>Postări reale ale clientelor noastre, direct de pe Instagram și Facebook.</p>
+  </div>
+  <div class="social-grid" id="socialGrid">
+    <div class="social-loading">Se încarcă postările…</div>
+  </div>
+  <div class="social-cta">
+    <p>Ne-ai etichetat într-o postare? Ne-ar face mare plăcere să o vedem.</p>
+    <a href="https://www.instagram.com/raise.clinique/" target="_blank" rel="noopener" class="btn">
+      Urmărește-ne pe Instagram
+    </a>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="faq reveal" id="faq" data-screen-label="faq">
   <div class="section-head">
@@ -1788,6 +1849,7 @@
       <a href="#team">Echipa</a>
       <a href="#services">Servicii</a>
       <a href="#rezultate">Rezultate</a>
+      <a href="#comunitate">Comunitate</a>
       <a href="#promo">Promoții</a>
       <a href="#faq">Întrebări</a>
       <a href="#contact">Programare</a>
@@ -2218,6 +2280,122 @@
         show(curIdx + (dx < 0 ? 1 : -1));
       }
     }, { passive: true });
+  })();
+</script>
+
+<script src="social-embeds.js"></script>
+<script>
+  // ===== Postări social media (embed-uri oficiale Instagram / Facebook) =====
+  (function(){
+    const section = document.getElementById('comunitate');
+    const grid = document.getElementById('socialGrid');
+    if (!section || !grid) return;
+
+    const posts = (window.SOCIAL_EMBEDS || []).filter(p => p && p.url && p.type);
+
+    // Nicio postare configurată → ascundem secțiunea și linkurile către ea,
+    // ca să nu rămână o zonă goală sau un link mort în meniu.
+    if (!posts.length) {
+      section.remove();
+      document.querySelectorAll('a[href="#comunitate"]').forEach(a => (a.closest('li') || a).remove());
+      document.querySelectorAll('.mobile-menu li .num')
+        .forEach((n, i) => { n.textContent = String(i + 1).padStart(2, '0'); });
+      return;
+    }
+
+    // Instagram acceptă la embed doar /p/, /reel/ și /tv/.
+    // Link-urile copiate din aplicație vin adesea ca /reels/ (plural), care dă 404,
+    // și cu parametri de urmărire (?igsh=…). Le normalizăm aici.
+    function cleanUrl(u){
+      let s = String(u).trim().split('?')[0].split('#')[0];
+      s = s.replace('/reels/', '/reel/');
+      if (!s.endsWith('/')) s += '/';
+      return s;
+    }
+
+    let built = false;
+    function build(){
+      if (built) return;
+      built = true;
+      grid.innerHTML = '';
+      let needsInstagram = false;
+
+      posts.forEach(p => {
+        const cell = document.createElement('div');
+        cell.className = 'social-item';
+
+        if (p.type === 'instagram') {
+          needsInstagram = true;
+          const bq = document.createElement('blockquote');
+          bq.className = 'instagram-media';
+          bq.setAttribute('data-instgrm-permalink', cleanUrl(p.url));
+          bq.setAttribute('data-instgrm-version', '14');
+          bq.setAttribute('data-instgrm-captioned', '');
+          cell.appendChild(bq);
+        } else if (p.type === 'facebook') {
+          const f = document.createElement('iframe');
+          f.src = 'https://www.facebook.com/plugins/post.php?href=' +
+                  encodeURIComponent(p.url) + '&show_text=true&width=500';
+          f.width = '500';
+          f.height = String(p.height || 640);
+          f.loading = 'lazy';
+          f.title = 'Postare Facebook';
+          f.setAttribute('scrolling', 'no');
+          f.setAttribute('frameborder', '0');
+          f.setAttribute('allowfullscreen', 'true');
+          f.allow = 'clipboard-write; encrypted-media; picture-in-picture; web-share';
+          cell.appendChild(f);
+        } else {
+          return;
+        }
+        grid.appendChild(cell);
+      });
+
+      if (needsInstagram) loadInstagram();
+      guard();
+    }
+
+    // Plasă de siguranță: dacă Instagram/Facebook nu reușesc să încarce embed-urile
+    // (postare ștearsă, cont devenit privat, rețea blocată), toate iframe-urile
+    // rămân cu înălțime 0. Mai bine ascundem secțiunea decât să afișăm casete goale.
+    function guard(){
+      let tries = 0;
+      const t = setInterval(() => {
+        tries++;
+        const frames = [...grid.querySelectorAll('iframe')];
+        // s-a încărcat ceva → totul e în regulă, ne oprim
+        if (frames.some(f => f.getBoundingClientRect().height > 80)) { clearInterval(t); return; }
+        if (tries < 6) return; // reîncercăm ~15s, ca o conexiune lentă să nu fie penalizată
+        clearInterval(t);
+        section.remove();
+        document.querySelectorAll('a[href="#comunitate"]').forEach(a => (a.closest('li') || a).remove());
+        document.querySelectorAll('.mobile-menu li .num')
+          .forEach((n, i) => { n.textContent = String(i + 1).padStart(2, '0'); });
+      }, 2500);
+    }
+
+    function loadInstagram(){
+      if (window.instgrm && window.instgrm.Embeds) { window.instgrm.Embeds.process(); return; }
+      if (document.getElementById('ig-embed-js')) return;
+      const s = document.createElement('script');
+      s.id = 'ig-embed-js';
+      s.async = true;
+      s.src = 'https://www.instagram.com/embed.js';
+      s.onload = () => { if (window.instgrm && window.instgrm.Embeds) window.instgrm.Embeds.process(); };
+      document.body.appendChild(s);
+    }
+
+    // Construim abia când secțiunea se apropie de ecran: pagina rămâne rapidă,
+    // iar scripturile Meta nu se încarcă pentru cine nu ajunge până aici.
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((ents) => {
+        ents.forEach((en) => { if (en.isIntersecting) { io.disconnect(); build(); } });
+      }, { rootMargin: '300px' });
+      io.observe(section);
+      setTimeout(build, 4000); // plasă de siguranță
+    } else {
+      build();
+    }
   })();
 </script>
 
